@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :patient_analyses
   resources :analyses
   resources :patients
-  resources :declarations
   resources :appointments
   resources :doctors
   resources :genders
