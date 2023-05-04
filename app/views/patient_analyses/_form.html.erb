@@ -1,0 +1,27 @@
+<%= form_with(model: patient_analysis) do |form| %>
+  <% if patient_analysis.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(patient_analysis.errors.count, "error") %> prohibited this patient_analysis from being saved:</h2>
+
+      <ul>
+        <% patient_analysis.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :analysis_id, style: "display: block" %>
+    <%= form.text_field :analysis_id %>
+  </div>
+
+  <div>
+    <%= form.label :analysis_date, style: "display: block" %>
+    <%= form.date_field :analysis_date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

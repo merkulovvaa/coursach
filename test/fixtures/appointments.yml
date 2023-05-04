@@ -1,0 +1,34 @@
+# == Schema Information
+#
+# Table name: appointments
+#
+#  id                 :integer          not null, primary key
+#  appointment_date   :date
+#  report             :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  doctor_id          :integer          not null
+#  outpatient_card_id :integer          not null
+#
+# Indexes
+#
+#  index_appointments_on_doctor_id           (doctor_id)
+#  index_appointments_on_outpatient_card_id  (outpatient_card_id)
+#
+# Foreign Keys
+#
+#  doctor_id           (doctor_id => doctors.id)
+#  outpatient_card_id  (outpatient_card_id => outpatient_cards.id)
+#
+
+one:
+  doctor: one
+  patient: one
+  appointment_date: 2023-04-27
+  report: MyString
+
+two:
+  doctor: two
+  patient: two
+  appointment_date: 2023-04-27
+  report: MyString

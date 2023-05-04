@@ -1,0 +1,22 @@
+<%= form_with(model: spec) do |form| %>
+  <% if spec.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(spec.errors.count, "error") %> prohibited this spec from being saved:</h2>
+
+      <ul>
+        <% spec.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name_spec, style: "display: block" %>
+    <%= form.text_field :name_spec %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

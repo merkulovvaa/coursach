@@ -1,0 +1,2 @@
+module OutpatientCardsHelper
+end

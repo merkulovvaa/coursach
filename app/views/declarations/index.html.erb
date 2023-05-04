@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Declarations</h1>
+
+<div id="declarations">
+  <% @declarations.each do |declaration| %>
+    <%= render declaration %>
+    <p>
+      <%= link_to "Show this declaration", declaration %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New declaration", new_declaration_path %>

@@ -1,11 +1,12 @@
 # == Schema Information
 #
-# Table name: unavailable_dates
+# Table name: specs
 #
 #  id         :integer          not null, primary key
+#  name_spec  :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class UnavailableDate < ApplicationRecord
-  belongs_to :doctor
+class Spec < ApplicationRecord
+  has_many :doctors
 end

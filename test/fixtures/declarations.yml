@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: declarations
+#
+#  id         :integer          not null, primary key
+#  start_date :date
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  doctor_id  :integer          not null
+#  patient_id :integer          not null
+#
+# Indexes
+#
+#  index_declarations_on_doctor_id   (doctor_id)
+#  index_declarations_on_patient_id  (patient_id)
+#
+# Foreign Keys
+#
+#  doctor_id   (doctor_id => doctors.id)
+#  patient_id  (patient_id => patients.id)
+#
+
+one:
+  patient: one
+  doctor: one
+  start_date: 2023-04-27
+
+two:
+  patient: two
+  doctor: two
+  start_date: 2023-04-27

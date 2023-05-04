@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @outpatient_card %>
+
+<div>
+  <%= link_to "Edit this outpatient card", edit_outpatient_card_path(@outpatient_card) %> |
+  <%= link_to "Back to outpatient cards", outpatient_cards_path %>
+
+  <%= button_to "Destroy this outpatient card", @outpatient_card, method: :delete %>
+</div>

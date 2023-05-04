@@ -1,0 +1,27 @@
+<%= form_with(model: outpatient_card) do |form| %>
+  <% if outpatient_card.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(outpatient_card.errors.count, "error") %> prohibited this outpatient_card from being saved:</h2>
+
+      <ul>
+        <% outpatient_card.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :patient_id, style: "display: block" %>
+    <%= form.text_field :patient_id %>
+  </div>
+
+  <div>
+    <%= form.label :appointment_id, style: "display: block" %>
+    <%= form.text_field :appointment_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

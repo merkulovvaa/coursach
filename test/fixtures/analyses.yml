@@ -1,0 +1,15 @@
+# == Schema Information
+#
+# Table name: analyses
+#
+#  id            :integer          not null, primary key
+#  name_analysis :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+one:
+  name_analysis: MyString
+
+two:
+  name_analysis: MyString
