@@ -4,7 +4,7 @@ ARG DEFAULT_GEM_HOME="/usr/local/bundle"
 ARG PATH=$GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 
 # Layer 1. Download base ruby image
-FROM ruby:3.1.3-slim as builder
+FROM ruby:3.0.2-slim as builder
 
 # Layer 3. Copy aptfile to install apt deps
 WORKDIR /home
