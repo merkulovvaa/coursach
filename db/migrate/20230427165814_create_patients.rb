@@ -6,7 +6,6 @@ class CreatePatients < ActiveRecord::Migration[7.0]
       t.string :phone_number
       t.string :email
       t.date :birth_date
-      t.references :outpatient_card, null: false, foreign_key: true
       t.references :gender, null: false, foreign_key: true
 
       t.timestamps

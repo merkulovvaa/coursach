@@ -4,14 +4,13 @@ ARG DEFAULT_GEM_HOME="/usr/local/bundle"
 ARG PATH=$GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 
 # Layer 1. Download base ruby image
-FROM ruby:3.1.3-slim as builder
+FROM ruby:3.1.2-slim as builder
 
 # Layer 3. Copy aptfile to install apt deps
 WORKDIR /home
 COPY aptfile aptfile
 
 # Layer 4. Updating and installing the necessary software for the Web server. Cleaning to reduce image size.
-# hadolint ignore=DL3008
 RUN apt-get update -qq && xargs apt-get install --no-install-recommends -yq < aptfile && export DEBIAN_FRONTEND=noninteractive \
   && apt-get clean && apt-get autoclean && apt-get clean all \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
@@ -29,7 +28,7 @@ WORKDIR ${APP_HOME}
 # Layer 8. Copying Gemfile and Gemfile.lock.
 COPY Gemfile* ./
 # Layer 9. Installing dependencies.
-RUN bundle check || bundle install --without development test --jobs 20 --retry 5
+RUN bundle check || bundle install --jobs 20 --retry 5
 
 # Layer 10. Use multistage.
 FROM ruby:3.1.2-slim as runner

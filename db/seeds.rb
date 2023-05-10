@@ -60,4 +60,6 @@ Analysis.create!(name_analysis: 'X-Ray')
     appointment: appointment_cur,
     analysis_date: Faker::Date.between(from: appointment_cur.appointment_date, to: Date.today)
   )
-end
+  end
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

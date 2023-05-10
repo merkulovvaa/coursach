@@ -21,7 +21,7 @@
 #  outpatient_card_id  (outpatient_card_id => outpatient_cards.id)
 #
 class Appointment < ApplicationRecord
-  belongs_to :doctor
+  belongs_to :doctor, optional: true
   belongs_to :outpatient_card
   has_many :patient_analysis
 end

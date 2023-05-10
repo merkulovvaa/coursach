@@ -7,5 +7,5 @@
 #  updated_at :datetime         not null
 #
 class UnavailableDate < ApplicationRecord
-  belongs_to :doctor
+  belongs_to :doctor, optional: true
 end
