@@ -1,6 +1,7 @@
 ActiveAdmin.register Doctor do
-  permit_params :spec, :department
+  permit_params :spec, :department, :full_name, :email, :status, :start_working_date, :gender
 
+  config.remove_action_item(:destroy)
   index do
     selectable_column
     id_column
@@ -12,8 +13,10 @@ ActiveAdmin.register Doctor do
     column :department do |doc|
       doc.department.name_depart
     end
+    column :status
     actions
   end
+
 
   show do
     attributes_table do
@@ -29,10 +32,12 @@ ActiveAdmin.register Doctor do
         doc.department.name_depart
       end
       row :start_working_date
+      row :status
       row :created_at
       row :updated_at
     end
   end
+
 
     form do |f|
       f.semantic_errors # Show error messages on :base instead of each attribute
@@ -40,6 +45,7 @@ ActiveAdmin.register Doctor do
       f.inputs do
         f.input :full_name
         f.input :email
+        f.input :status
         f.input :gender, collection: Gender.all.map {|g| [g.name_gender, g.id] }
         f.input :spec, collection: Spec.all.map {|s| [s.name_spec, s.id] }
         f.input :department, collection: Department.all.map {|d| [d.name_depart, d.id] }

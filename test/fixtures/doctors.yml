@@ -6,6 +6,7 @@
 #  email              :string
 #  full_name          :string
 #  start_working_date :date
+#  status             :integer          default("active")
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  department_id      :integer          not null

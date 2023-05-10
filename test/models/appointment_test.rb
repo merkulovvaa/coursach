@@ -5,6 +5,7 @@
 #  id                 :integer          not null, primary key
 #  appointment_date   :date
 #  report             :string
+#  status             :integer          default("active")
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  doctor_id          :integer          not null

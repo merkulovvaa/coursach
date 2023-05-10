@@ -4,17 +4,14 @@ ARG DEFAULT_GEM_HOME="/usr/local/bundle"
 ARG PATH=$GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
 
 # Layer 1. Download base ruby image
-FROM ruby:3.1.2-slim as builder
+FROM ruby:3.1.3-slim as builder
 
 # Layer 3. Copy aptfile to install apt deps
 WORKDIR /home
 COPY aptfile aptfile
 
 # Layer 4. Updating and installing the necessary software for the Web server. Cleaning to reduce image size.
-RUN apt-get update -qq && xargs apt-get install --no-install-recommends -yq < aptfile && export DEBIAN_FRONTEND=noninteractive \
-  && apt-get clean && apt-get autoclean && apt-get clean all \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-  && truncate -s 0 /var/log/*log
+RUN apt-get update -qq
 
 #. Layer 5. Inherit default variabels
 ARG PATH=$GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH

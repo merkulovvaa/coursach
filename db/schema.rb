@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_06_191329) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_10_100350) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_06_191329) do
     t.string "report"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["outpatient_card_id"], name: "index_appointments_on_outpatient_card_id"
   end
@@ -69,6 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_06_191329) do
     t.date "start_working_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["department_id"], name: "index_doctors_on_department_id"
     t.index ["gender_id"], name: "index_doctors_on_gender_id"
     t.index ["spec_id"], name: "index_doctors_on_spec_id"
