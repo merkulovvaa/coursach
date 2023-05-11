@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   devise_scope :doctor do
     authenticated :doctor do
       root 'pages#doctor', as: :doctor_root
+      get '/appointments', to: 'pages#appointments', as: :doctor_appointments
     end
   end
 
