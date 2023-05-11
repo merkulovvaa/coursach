@@ -11,11 +11,7 @@ WORKDIR /home
 COPY aptfile aptfile
 
 # Layer 4. Updating and installing the necessary software for the Web server. Cleaning to reduce image size.
-# hadolint ignore=DL3008
-RUN apt-get update -qq && xargs apt-get install --no-install-recommends -yq < aptfile && export DEBIAN_FRONTEND=noninteractive \
-  && apt-get clean && apt-get autoclean && apt-get clean all \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-  && truncate -s 0 /var/log/*log
+RUN apt-get update -qq
 
 #. Layer 5. Inherit default variabels
 ARG PATH=$GEM_HOME/bin:$GEM_HOME/gems/bin:$PATH
@@ -29,7 +25,7 @@ WORKDIR ${APP_HOME}
 # Layer 8. Copying Gemfile and Gemfile.lock.
 COPY Gemfile* ./
 # Layer 9. Installing dependencies.
-RUN bundle check || bundle install --without development test --jobs 20 --retry 5
+RUN bundle check || bundle install --jobs 20 --retry 5
 
 # Layer 10. Use multistage.
 FROM ruby:3.1.2-slim as runner

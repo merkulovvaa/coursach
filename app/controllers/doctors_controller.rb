@@ -1,70 +1,51 @@
 class DoctorsController < ApplicationController
-  before_action :set_doctor, only: %i[ show edit update destroy ]
-
-  # GET /doctors or /doctors.json
+  before_action :authenticate_doctor!
   def index
     @doctors = Doctor.all
   end
 
-  # GET /doctors/1 or /doctors/1.json
   def show
+    @doctor = current_doctor
   end
 
-  # GET /doctors/new
   def new
     @doctor = Doctor.new
   end
 
-  # GET /doctors/1/edit
-  def edit
-  end
-
-  # POST /doctors or /doctors.json
   def create
     @doctor = Doctor.new(doctor_params)
 
-    respond_to do |format|
-      if @doctor.save
-        format.html { redirect_to doctor_url(@doctor), notice: "Doctor was successfully created." }
-        format.json { render :show, status: :created, location: @doctor }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @doctor.errors, status: :unprocessable_entity }
-      end
+    if @doctor.save
+      redirect_to @doctor
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /doctors/1 or /doctors/1.json
+  def edit
+    @doctor = Doctor.find(params[:id])
+  end
+
   def update
-    respond_to do |format|
-      if @doctor.update(doctor_params)
-        format.html { redirect_to doctor_url(@doctor), notice: "Doctor was successfully updated." }
-        format.json { render :show, status: :ok, location: @doctor }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @doctor.errors, status: :unprocessable_entity }
-      end
+    @doctor = Doctor.find(params[:id])
+
+    if @doctor.update(doctor_params)
+      redirect_to @doctor
+    else
+      render :edit
     end
   end
 
-  # DELETE /doctors/1 or /doctors/1.json
   def destroy
+    @doctor = Doctor.find(params[:id])
     @doctor.destroy
 
-    respond_to do |format|
-      format.html { redirect_to doctors_url, notice: "Doctor was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to doctors_path
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_doctor
-      @doctor = Doctor.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def doctor_params
-      params.require(:doctor).permit(:full_name, :gender_id, :spec_id, :department_id, :start_working_date, :email)
-    end
+  def doctor_params
+    params.require(:doctor).permit(:full_name, :email, :gender_id, :spec_id, :department_id, :start_working_date)
+  end
 end

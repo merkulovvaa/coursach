@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_04_170844) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_10_141931) do
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.string "author_type"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
   create_table "analyses", force: :cascade do |t|
     t.string "name_analysis"
     t.datetime "created_at", null: false
@@ -24,8 +50,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_170844) do
     t.string "report"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["outpatient_card_id"], name: "index_appointments_on_outpatient_card_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "departments", force: :cascade do |t|
@@ -43,8 +76,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_170844) do
     t.date "start_working_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.integer "category_id", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["category_id"], name: "index_doctors_on_category_id"
     t.index ["department_id"], name: "index_doctors_on_department_id"
+    t.index ["email"], name: "index_doctors_on_email", unique: true
     t.index ["gender_id"], name: "index_doctors_on_gender_id"
+    t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
     t.index ["spec_id"], name: "index_doctors_on_spec_id"
   end
 
@@ -77,12 +119,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_170844) do
     t.string "phone_number"
     t.string "email"
     t.date "birth_date"
-    t.integer "outpatient_card_id", null: false
-    t.integer "gender_id", null: false
+    t.integer "gender_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_patients_on_email", unique: true
     t.index ["gender_id"], name: "index_patients_on_gender_id"
-    t.index ["outpatient_card_id"], name: "index_patients_on_outpatient_card_id"
+    t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
   end
 
   create_table "specs", force: :cascade do |t|
@@ -98,6 +144,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_170844) do
 
   add_foreign_key "appointments", "doctors"
   add_foreign_key "appointments", "outpatient_cards"
+  add_foreign_key "doctors", "categories"
   add_foreign_key "doctors", "departments"
   add_foreign_key "doctors", "genders"
   add_foreign_key "doctors", "specs"
@@ -105,5 +152,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_04_170844) do
   add_foreign_key "patient_analyses", "analyses"
   add_foreign_key "patient_analyses", "appointments"
   add_foreign_key "patients", "genders"
-  add_foreign_key "patients", "outpatient_cards"
 end
