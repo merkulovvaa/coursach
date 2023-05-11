@@ -35,6 +35,28 @@
       .container ul {
           margin-top: 10px;
       }
+      nav ul {
+          display: flex;
+          flex-direction: row;
+      }
+
+      nav li {
+          margin-right: 10px;
+      }
+      .container ul {
+          margin-top: 10px;
+      }
+      .appointments ul {
+          display: flex;
+          flex-direction: column;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+      }
+
+      .appointments li {
+          margin-bottom: 10px;
+      }
   </style>
 </head>
 <body>
@@ -47,21 +69,17 @@
   </nav>
 </header>
 <main>
-  <h2>Appointments for today:</h2>
-  <% today_appointments = current_doctor.appointments.where(appointment_date: Date.today) %>
-  <% if today_appointments.any? %>
-    <ul>
-      <% today_appointments.each do |appointment| %>
-        <li><%= appointment.time %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>На сегодня нет приемов.</p>
-  <% end %>
-
-    <ul class="container ul">
-      <li> <%= link_to 'Appointments For Next Days', doctor_appointments_path %></li>
-    </ul>
+  <main class="appointments">
+    <% if current_doctor.appointments.where('appointment_date >= ?', Date.today).any? %>
+      <ul>
+        <% current_doctor.appointments.where('appointment_date >= ?', Date.today).each do |appointment| %>
+          <li><%= appointment.appointment_date %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>Нет записей на прием.</p>
+    <% end %>
+  </main>
 </main>
 </body>
 </html>
