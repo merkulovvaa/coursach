@@ -17,5 +17,5 @@
 #
 class OutpatientCard < ApplicationRecord
   belongs_to :patient
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
 end

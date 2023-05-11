@@ -17,7 +17,7 @@ ActiveAdmin.register Patient do
 
   filter :full_name
   filter :email
-  filter :gender
+  filter :gender, as: :select, collection: Gender.all.map {|g| [g.name_gender, g.id] }
   filter :phone_number
   filter :birth_date
   filter :address

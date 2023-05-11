@@ -22,9 +22,9 @@
 #  outpatient_card_id  (outpatient_card_id => outpatient_cards.id)
 #
 class Appointment < ApplicationRecord
-  belongs_to :doctor, optional: true
+  belongs_to :doctor
   belongs_to :outpatient_card
-  has_many :patient_analysis
+  has_many :patient_analysis, dependent: :destroy
 
   enum status: { active: 0, finished: 1, canceled: -1 }
 end

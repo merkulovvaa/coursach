@@ -1,12 +1,12 @@
 # == Schema Information
 #
-# Table name: analyses
+# Table name: categories
 #
 #  id            :integer          not null, primary key
-#  name_analysis :string
+#  category_name :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
-class Analysis < ApplicationRecord
-  has_many :patient_analisis, dependent: :destroy
+class Category < ApplicationRecord
+  has_many :doctors
 end
