@@ -1,1 +1,69 @@
-<h1>Welcome <%= current_doctor.email %></h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+      nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #f8f8f8;
+          padding: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+      }
+      li {
+          margin-right: 10px;
+      }
+      a {
+          text-decoration: none;
+          color: #333;
+      }
+      .container {
+          display: flex;
+          flex-direction: column;
+          width: 200px;
+          height: 200px;
+          background-color: #eee;
+          padding: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .container ul {
+          margin-top: 10px;
+      }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><%= link_to current_doctor.full_name, doctor_path(current_doctor) %></li>
+      <li><%= link_to 'Settings', edit_doctor_path(current_doctor) %></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <h2>Appointments for today:</h2>
+  <% today_appointments = current_doctor.appointments.where(appointment_date: Date.today) %>
+  <% if today_appointments.any? %>
+    <ul>
+      <% today_appointments.each do |appointment| %>
+        <li><%= appointment.time %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>На сегодня нет приемов.</p>
+  <% end %>
+
+<!--  <div class="container">-->
+    <ul class="container ul">
+<!--      <li> <%#= link_to 'All Appointments',  %></li>-->
+    </ul>
+<!--  </div>-->
+</main>
+</body>
+</html>

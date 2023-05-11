@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   devise_scope :doctor do
     authenticated :doctor do
-      root 'doctors#show', as: :doctor_root
+      root 'pages#doctor', as: :doctor_root
     end
   end
 
