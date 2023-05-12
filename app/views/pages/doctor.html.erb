@@ -52,7 +52,7 @@
   <% if today_appointments.any? %>
     <ul>
       <% today_appointments.each do |appointment| %>
-        <li><%= appointment.time %></li>
+        <li><%= appointment.appointment_date %></li>
       <% end %>
     </ul>
   <% else %>
