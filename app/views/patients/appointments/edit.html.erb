@@ -1,10 +1,21 @@
-<h1>Editing appointment</h1>
+<h1>Finishing appointment</h1>
 
-<%= render "form", appointment: @appointment %>
+<%= form_for(@appointment) do |f| %>
+  <div>
+    <%= f.label :report %>
+    <%= f.text_area :report %>
+  </div>
 
-<br>
+  <div class="actions">
+    <%= f.submit "Finish Appointment" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Cancel Appointment" %>
+  </div>
+<% end %>
 
 <div>
   <%= link_to "Show this appointment", @appointment %> |
-  <%= link_to "Back to appointments", patients_appointments_path %>
+  <%= link_to "Back to home page", doctor_root_path %>
 </div>
