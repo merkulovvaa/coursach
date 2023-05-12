@@ -20,4 +20,5 @@
 #
 class UnavailableDate < ApplicationRecord
   belongs_to :doctor
+  enum leave_type: { sick_leave: 0, vacation: 1 }
 end

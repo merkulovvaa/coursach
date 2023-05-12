@@ -1,0 +1,1 @@
+json.array! @unavailable_dates, partial: "unavailable_dates/unavailable_date", as: :unavailable_date
