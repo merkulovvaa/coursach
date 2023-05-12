@@ -3,8 +3,10 @@
 <%= render @doctor %>
 
 <div>
-  <%= link_to "Edit this doctor", edit_doctor_path(@doctor) %> |
-  <%= link_to "Back to doctors", doctors_path %>
+  <%= link_to "Back to home page", doctor_root_path %>
 
-  <%= button_to "Destroy this doctor", @doctor, method: :delete %>
+  <%#= link_to "Edit this doctor", edit_doctor_path(@doctor) %>
+  <%#= link_to "Back to doctors", doctors_path %>
+
+  <%#= button_to "Destroy this doctor", @doctor, method: :delete %>
 </div>

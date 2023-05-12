@@ -29,6 +29,12 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
 
     if @appointment.update(appointment_params)
+      if params[:commit] == "Finish Appointment"
+        @appointment.update(status: 1)
+      end
+      if params[:commit] == "Cancel Appointment"
+        @appointment.update(status: -1)
+      end
       redirect_to @appointment
     else
       render :edit
