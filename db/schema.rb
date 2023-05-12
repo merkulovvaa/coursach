@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_10_141931) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_12_204912) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -140,6 +140,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_141931) do
   create_table "unavailable_dates", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "doctor_id", null: false
+    t.integer "leave_type", default: 0
+    t.index ["doctor_id"], name: "index_unavailable_dates_on_doctor_id"
   end
 
   add_foreign_key "appointments", "doctors"
@@ -152,4 +157,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_141931) do
   add_foreign_key "patient_analyses", "analyses"
   add_foreign_key "patient_analyses", "appointments"
   add_foreign_key "patients", "genders"
+  add_foreign_key "unavailable_dates", "doctors"
 end

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Unavailable dates</h1>
+
+<div id="unavailable_dates">
+  <% @unavailable_dates.each do |unavailable_date| %>
+    <%= render unavailable_date %>
+    <p>
+      <%= link_to "Show this unavailable date", unavailable_date %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New unavailable date", new_unavailable_date_path %>

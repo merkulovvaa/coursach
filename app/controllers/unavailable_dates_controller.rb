@@ -12,6 +12,11 @@ class UnavailableDatesController < ApplicationController
   end
 
   def create
+    if params[:unavailable_date][:leave_type] == "sick_leave"
+      params[:unavailable_date][:leave_type] = 0
+    else
+      params[:unavailable_date][:leave_type] = 1
+    end
     @unavailable_date = UnavailableDate.new(unavailable_date_params)
 
     if @unavailable_date.save
@@ -45,6 +50,7 @@ class UnavailableDatesController < ApplicationController
   private
 
   def unavailable_date_params
-    params.require(:unavailable_date).permit()
+    params.require(:unavailable_date).permit(:start_date, :end_date, :doctor_id, :leave_type)
   end
+
 end
