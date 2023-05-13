@@ -6,6 +6,15 @@
     <%= f.text_area :report %>
   </div>
 
+  <h3> Additionally: analyses </h3>
+
+  <div>
+    <% Analysis.all.each do |analysis| %>
+      <%= check_box_tag "appointment[analysis_ids][]", analysis.id %>
+      <%= analysis.name_analysis %>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Finish Appointment" %>
   </div>
