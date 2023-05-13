@@ -61,10 +61,10 @@
 </header>
 <main>
   <main class="appointments">
-    <% if current_doctor.appointments.where('appointment_date > ?', Date.today).any? %>
+    <% if current_doctor.appointments.where('appointment_date > ?', Date.today).where(status: "active").any? %>
       <h5>Patient's name | Date&Time</h5>
       <ul>
-        <% current_doctor.appointments.where('appointment_date > ?', Date.today).each do |appointment| %>
+        <% current_doctor.appointments.where('appointment_date > ?', Date.today).where(status: "active").each do |appointment| %>
           <li><%= appointment.outpatient_card.patient.full_name %> <%= appointment.appointment_date %></li>
         <% end %>
       </ul>
