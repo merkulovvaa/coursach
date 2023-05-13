@@ -30,6 +30,7 @@ class UnavailableDatesController < ApplicationController
     @unavailable_date = UnavailableDate.new(unavailable_date_params)
 
     if @unavailable_date.valid? && @unavailable_date.save
+      CancelAppointmentsService.call(current_doctor, @unavailable_date.start_date, @unavailable_date.end_date)
       redirect_to @unavailable_date
     else
       flash[:error] = @unavailable_date.errors.full_messages.join(", ")
