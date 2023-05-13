@@ -53,4 +53,12 @@ class Doctor < ApplicationRecord
 
     update(rating: rating)
   end
+
+  scope :by_spec, ->(name_spec) { joins(:spec).where(spec: { name_spec: name_spec })}
+
+  delegate :name_gender, to: :gender, prefix: true, allow_nil: true
+  delegate :name_spec, to: :spec, prefix: true, allow_nil: true
+  delegate :name_department, to: :depart, prefix: true, allow_nil: true
+  delegate :category_name, to: :category, prefix: true, allow_nil: true
 end
+

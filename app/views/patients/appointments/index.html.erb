@@ -6,9 +6,8 @@
   <% @appointments.each do |appointment| %>
     <%= render appointment %>
     <p>
-      <%= link_to "Show this appointment", appointment %>
+      <%= link_to "Show this appointment", controller: "patients/appointments", action: "show", id: appointment.id %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New appointment", new_appointment_path %>

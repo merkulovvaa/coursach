@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @appointment %>
+
+<div>
+  <%= link_to "Back to appointments", patients_appointments_path %>
+
+  <%= button_to "Cancel this appointment", "/patients/appointments/#{@appointment.id}", method: :delete %>
+</div>

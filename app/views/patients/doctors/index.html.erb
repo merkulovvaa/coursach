@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Doctors</h1>
+
+<div id="doctors">
+  <% @doctors.each do |doctor| %>
+    <%= render doctor %>
+    <%= link_to 'Записаться на прием', new_patients_appointment_path(doctor_id: doctor.id), class: 'btn btn-primary' %>
+    <% end %>
+</div>

@@ -27,4 +27,11 @@ class Appointment < ApplicationRecord
   has_many :patient_analysis, dependent: :destroy
 
   enum status: { active: 0, finished: 1, canceled: -1 }
+
+  delegate :full_name, to: :doctor, prefix: true, allow_nil: true
+  delegate :spec_id, to: :doctor, prefix: true, allow_nil: true
+  delegate :patient_id, to: :outpatient_card, prefix: true, allow_nil: true
+
+
+  attribute :doctor_spec, :string
 end

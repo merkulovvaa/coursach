@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   devise_scope :patient do
     authenticated :patient do
-      root 'patients#show', as: :patient_root
+      root 'pages#patient', as: :patient_root
     end
   end
 
@@ -19,6 +19,14 @@ Rails.application.routes.draw do
 
   root "pages#home"
 
+  namespace :patients do
+    resources :doctors
+  end
+
+  namespace :patients do
+    resources :appointments
+  end
+
   resources :outpatient_cards
   resources :patient_analyses
   resources :analyses
@@ -28,6 +36,4 @@ Rails.application.routes.draw do
   resources :specs
   resources :doctors
   resources :patients
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  # Defines the root path route ("/")
 end

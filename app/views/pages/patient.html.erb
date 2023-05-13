@@ -1,1 +1,18 @@
-<h1>Welcome <%= current_patient.email %></h1>
+<form action="<%= patients_doctors_path %>" method="get">
+  <label for="specialty">Введите специальность врача:</label>
+  <input type="text" id="specialty" name="specialty">
+  <button type="submit">Найти</button>
+</form>
+  <form action="<%= patients_appointments_path %>" method="get">
+    <label for="specialty">Приемы:</label>
+    <button type="submit">Перейти</button>
+  </form>
+<header>
+  <nav>
+    <ul>
+      <li><%= link_to current_patient.full_name, patient_path(current_patient) %></li>
+      <li><%= link_to 'Settings', edit_patient_path(current_patient) %></li>
+      <li><%= button_to 'Logout', destroy_patient_session_path, method: :delete %></li>
+    </ul>
+  </nav>
+</header>
