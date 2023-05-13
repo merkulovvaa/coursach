@@ -46,6 +46,14 @@
     </ul>
   </nav>
 </header>
+<% unavailable_dates = current_doctor.unavailable_dates.where('start_date <= ? AND end_date >= ?', Date.today, Date.today) %>
+<% if unavailable_dates.any? %>
+  <% if unavailable_dates.vacation.any? %>
+    <h2>Вы в отпуске</h2>
+  <% elsif unavailable_dates.sick_leave.any? %>
+    <h2>Вы на больничном</h2>
+  <% end %>
+<% else %>
 <main>
   <h2>Appointments for today:</h2>
   <% today_appointments = current_doctor.appointments.where(appointment_date: Date.today) %>
@@ -66,10 +74,11 @@
   <% else %>
     <p>На сегодня нет приемов.</p>
   <% end %>
-
+<% end %>
   <ul class="container ul">
     <li> <%= link_to 'Appointments For Next Days', doctor_appointments_path %></li>
     <li> <%= link_to 'Take a vacation', new_unavailable_date_path %></li>
+    <li> <%= link_to 'Watch all vacations', unavailable_dates_path %></li>
   </ul>
 </main>
 </body>
