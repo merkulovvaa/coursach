@@ -14,7 +14,16 @@ module Patients
       @appointment.outpatient_card_id = current_patient.id
       @selected_doctor = Doctor.find(params[:doctor_id]) if params[:doctor_id]
       @available_dates = AvailableDatesService.new(@selected_doctor, Date.today, 14.days.from_now).call
-      @available_times = AvailableTimesService.new(@selected_doctor, params[:appointment_date]).call
+    end
+
+    def appointment_date
+      @appointment = Appointment.new
+      @appointment.outpatient_card_id = current_patient.id
+      @appointment.appointment_date = Date.parse(appointment_params[:appointment_date])
+      @selected_doctor = Doctor.find(appointment_params[:doctor_id]) if appointment_params[:doctor_id]
+
+      @available_times = AvailableTimesService.call(@selected_doctor, @appointment.appointment_date)
+      render 'final_choose'
     end
 
     def create
@@ -46,8 +55,6 @@ module Patients
 
     def destroy
       @appointment = Appointment.find(params[:id])
-
-
       @appointment.canceled!
 
       redirect_to patients_appointments_path

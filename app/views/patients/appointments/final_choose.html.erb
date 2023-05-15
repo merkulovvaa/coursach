@@ -1,23 +1,26 @@
-<%= form_with(model: appointment, url: patients_appointment_date_path, method: :post) do |form| %>
+<h1>Choose Available Time</h1>
+
+<%= form_with(model: @appointment, url: patients_appointments_path) do |form| %>
   <div>
     <%= form.label :doctor_id, style: "display: block" %>
     <% if @selected_doctor %>
       <%= form.hidden_field :doctor_id, value: @selected_doctor.id, readonly: true %>
       <div class="field">
         <%= @selected_doctor.full_name %>
-  </div>
+      </div>
       <div class="field">
         <%= @selected_doctor.spec.name_spec %>
       </div>
-    <%end %>
+    <% end %>
   </div>
 
   <div>
-    <%= form.hidden_field :outpatient_card_id%>
+    <%= form.hidden_field :outpatient_card_id %>
   </div>
 
-  <%= form.label :appointment_date, style: "display: block" %>
-  <%= form.select :appointment_date, options_for_select(@available_dates), {}, {class: 'form-control'} %>
+  <div>
+    <%= form.hidden_field :appointment_date %>
+  </div>
 
   <div>
     <%= form.hidden_field :report, readonly: true %>
@@ -27,7 +30,10 @@
     <%= form.hidden_field :status, readonly: true %>
   </div>
 
+  <%= form.label :appointment_time, style: "display: block" %>
+  <%= form.select :app_time, options_for_select(@available_times.map { |t| [t.strftime('%H:%M'), t] }), {}, {class: 'form-control'} %>
+
   <div>
-    <%= form.submit 'Submit', disabled: @available_dates.empty? %>
+    <%= form.submit %>
   </div>
 <% end %>

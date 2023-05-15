@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   namespace :patients do
     resources :appointments
+    post '/appointments/appointment_date', to: 'appointments#appointment_date', as: 'appointment_date'
   end
 
   resources :outpatient_cards
