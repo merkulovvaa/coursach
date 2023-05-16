@@ -32,9 +32,9 @@ ActiveAdmin.register Doctor do
       row :spec do |doc|
         doc.spec.name_spec
       end
-      row :department do |doc|
-        doc.department.name_depart
-      end
+      # row :department do |doc|
+      #   doc.department.name_depart
+      # end
       row :category do |doc|
         doc.category.category_name
       end
@@ -54,7 +54,7 @@ ActiveAdmin.register Doctor do
       f.input :status
       f.input :gender, collection: Gender.all.map {|g| [g.name_gender, g.id] }
       f.input :spec, collection: Spec.all.map {|s| [s.name_spec, s.id] }
-      f.input :department, collection: Department.all.map {|d| [d.name_depart, d.id] }
+      # f.input :department, collection: Department.all.map {|d| [d.name_depart, d.id] }
       f.input :category, collection: Category.all.map {|c| [c.category_name, c.id] }
       f.input :start_working_date
     end
@@ -62,7 +62,7 @@ ActiveAdmin.register Doctor do
   end
 
   filter :spec, as: :select, collection: Spec.all.map {|s| [s.name_spec, s.id] }
-  filter :department, as: :select, collection: Department.all.map {|d| [d.name_depart, d.id] }
+  # filter :department, as: :select, collection: Department.all.map {|d| [d.name_depart, d.id] }
   filter :status, as: :select, collection: Doctor.statuses
   filter :category, as: :select, collection: Category.all.map {|c| [c.category_name, c.id] }
 end

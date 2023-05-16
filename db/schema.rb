@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_10_141931) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_171638) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_141931) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
+    t.float "rating"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["outpatient_card_id"], name: "index_appointments_on_outpatient_card_id"
   end
@@ -82,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_141931) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.float "rating"
     t.index ["category_id"], name: "index_doctors_on_category_id"
     t.index ["department_id"], name: "index_doctors_on_department_id"
     t.index ["email"], name: "index_doctors_on_email", unique: true

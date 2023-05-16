@@ -1,6 +1,4 @@
-module Patients
-
-  class AppointmentsController < ApplicationController
+class Patients::AppointmentsController < ApplicationController
     def index
     @appointments = current_patient.outpatient_card.appointments
     end
@@ -33,7 +31,8 @@ module Patients
       @appointment = Appointment.find(params[:id])
 
       if @appointment.update(appointment_params)
-        redirect_to @appointment
+        @appointment.doctor.update_rating if @appointment.finished?
+        redirect_to patients_appointment_path(@appointment)
       else
         render :edit
       end
@@ -51,7 +50,6 @@ module Patients
     private
 
     def appointment_params
-      params.require(:appointment).permit(:doctor_id, :outpatient_card_id, :appointment_date, :report, :status)
+      params.require(:appointment).permit(:doctor_id, :outpatient_card_id, :appointment_date, :report, :status, :rating)
     end
   end
-end

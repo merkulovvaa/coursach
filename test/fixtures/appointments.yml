@@ -4,6 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  appointment_date   :date
+#  rating             :float
 #  report             :string
 #  status             :integer          default("active")
 #  created_at         :datetime         not null

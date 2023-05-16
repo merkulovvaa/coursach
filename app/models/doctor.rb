@@ -6,6 +6,7 @@
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
 #  full_name              :string
+#  rating                 :float
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -49,9 +50,7 @@ class Doctor < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   def update_rating
-    rating = appointments.sum(&:rating) / appointments.count
-
-    update(rating: rating)
+    update_column(:rating, appointments.finished.average(:rating))
   end
 
   scope :by_spec, ->(name_spec) { joins(:spec).where(spec: { name_spec: name_spec })}

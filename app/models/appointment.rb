@@ -4,6 +4,7 @@
 #
 #  id                 :integer          not null, primary key
 #  appointment_date   :date
+#  rating             :float
 #  report             :string
 #  status             :integer          default("active")
 #  created_at         :datetime         not null
@@ -34,4 +35,6 @@ class Appointment < ApplicationRecord
 
 
   attribute :doctor_spec, :string
+
+  validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, allow_nil: true
 end

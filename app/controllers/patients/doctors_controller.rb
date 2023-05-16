@@ -47,7 +47,7 @@ module Patients
     private
 
     def doctor_params
-      params.require(:doctor).permit(:full_name, :email, :gender_id, :spec_id, :department_id, :start_working_date)
+      params.require(:doctor).permit(:full_name, :email, :gender_id, :spec_id, :department_id, :start_working_date, :rating)
     end
   end
 end
