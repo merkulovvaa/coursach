@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_171638) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
+    t.datetime "app_time", precision: nil
     t.float "rating"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["outpatient_card_id"], name: "index_appointments_on_outpatient_card_id"
@@ -142,6 +143,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_171638) do
   create_table "unavailable_dates", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "doctor_id", null: false
+    t.integer "leave_type", default: 0
+    t.index ["doctor_id"], name: "index_unavailable_dates_on_doctor_id"
   end
 
   add_foreign_key "appointments", "doctors"
@@ -154,4 +160,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_171638) do
   add_foreign_key "patient_analyses", "analyses"
   add_foreign_key "patient_analyses", "appointments"
   add_foreign_key "patients", "genders"
+  add_foreign_key "unavailable_dates", "doctors"
 end

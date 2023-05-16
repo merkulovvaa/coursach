@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   devise_scope :doctor do
     authenticated :doctor do
-      root 'doctors#show', as: :doctor_root
+      root 'pages#doctor', as: :doctor_root
+      get '/appointments', to: 'pages#appointments', as: :doctor_appointments
     end
   end
 
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
 
   namespace :patients do
     resources :appointments
+    post '/appointments/appointment_date', to: 'appointments#appointment_date', as: 'appointment_date'
     resources :doctors
   end
 
@@ -32,4 +34,7 @@ Rails.application.routes.draw do
   resources :specs
   resources :doctors
   resources :patients
+  resources :unavailable_dates
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Defines the root path route ("/")
 end

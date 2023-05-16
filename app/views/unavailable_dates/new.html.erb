@@ -1,0 +1,25 @@
+<style>
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+    }
+</style>
+
+<h1>New unavailable date</h1>
+
+<% if flash[:error].present? %>
+  <div class="alert alert-danger"><%= flash[:error] %></div>
+<% end %>
+
+<%= render "form", unavailable_date: @unavailable_date %>
+
+<br>
+
+<div>
+  <%= link_to "Back to home page", doctor_root_path %>
+</div>

@@ -3,6 +3,7 @@
 # Table name: appointments
 #
 #  id                 :integer          not null, primary key
+#  app_time           :datetime
 #  appointment_date   :date
 #  rating             :float
 #  report             :string

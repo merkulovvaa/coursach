@@ -16,10 +16,8 @@
     <%= form.hidden_field :outpatient_card_id%>
   </div>
 
-  <div>
-    <%= form.label :appointment_date, style: "display: block" %>
-    <%= form.date_field :appointment_date %>
-  </div>
+  <%= form.label :appointment_date, style: "display: block" %>
+  <%= form.select :appointment_date, options_for_select(@available_dates), {}, {class: 'form-control'} %>
 
   <div>
     <%= form.hidden_field :report, readonly: true %>
@@ -37,6 +35,6 @@
   <% end %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit 'Submit', disabled: @available_dates.empty? %>
   </div>
 <% end %>

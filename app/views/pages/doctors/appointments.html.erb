@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+      nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #f8f8f8;
+          padding: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+      }
+      li {
+          margin-right: 10px;
+      }
+      a {
+          text-decoration: none;
+          color: #333;
+      }
+      .container ul {
+          margin-top: 10px;
+      }
+      nav ul {
+          display: flex;
+          flex-direction: row;
+      }
+
+      nav li {
+          margin-right: 10px;
+      }
+      .container ul {
+          margin-top: 10px;
+      }
+      .appointments ul {
+          display: flex;
+          flex-direction: column;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+      }
+
+      .appointments li {
+          margin-bottom: 10px;
+      }
+  </style>
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><%= link_to current_doctor.full_name, doctor_path(current_doctor) %></li>
+      <li><%= link_to 'Settings', edit_doctor_path(current_doctor) %></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <main class="appointments">
+    <% if current_doctor.appointments.where('appointment_date > ?', Date.today).where(status: "active").any? %>
+      <h5>Patient's name | Date&Time</h5>
+      <ul>
+        <% current_doctor.appointments.where('appointment_date > ?', Date.today).where(status: "active").each do |appointment| %>
+          <li><%= appointment.outpatient_card.patient.full_name %> <%= appointment.appointment_date %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>Нет записей на прием.</p>
+    <% end %>
+  </main>
+</main>
+</body>
+</html>
