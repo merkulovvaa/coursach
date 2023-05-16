@@ -1,6 +1,4 @@
-module Patients
-
-  class AppointmentsController < ApplicationController
+class Patients::AppointmentsController < ApplicationController
     def index
       @appointments = current_patient.outpatient_card.appointments
     end
