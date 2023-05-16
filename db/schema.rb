@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_193433) do
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
     t.datetime "app_time", precision: nil
+    t.float "rating"
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
     t.index ["outpatient_card_id"], name: "index_appointments_on_outpatient_card_id"
   end
@@ -83,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_193433) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.float "rating"
     t.index ["category_id"], name: "index_doctors_on_category_id"
     t.index ["department_id"], name: "index_doctors_on_department_id"
     t.index ["email"], name: "index_doctors_on_email", unique: true

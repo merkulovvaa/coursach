@@ -27,6 +27,13 @@
     <%= form.hidden_field :status, readonly: true %>
   </div>
 
+  <% if appointment.finished? %>
+    <div class="field">
+      <%= form.label :rating %>
+      <%= form.select :rating, (1..5).map { |n| [n, n] }, prompt: "Select rating", include_blank: true %>
+    </div>
+  <% end %>
+
   <div>
     <%= form.submit 'Submit', disabled: @available_dates.empty? %>
   </div>
