@@ -45,7 +45,8 @@ class Patients::AppointmentsController < ApplicationController
       @appointment = Appointment.find(params[:id])
 
       if @appointment.update(appointment_params)
-        redirect_to @appointment
+        @appointment.doctor.update_rating if @appointment.finished?
+        redirect_to patients_appointment_path(@appointment)
       else
         render :edit
       end
@@ -61,8 +62,7 @@ class Patients::AppointmentsController < ApplicationController
     private
 
     def appointment_params
-      params.require(:appointment).permit(:doctor_id, :outpatient_card_id, :appointment_date, :report, :status, :app_time)
+      params.require(:appointment).permit(:doctor_id, :outpatient_card_id, :appointment_date, :report, :status, :app_time, :rating)
     end
 
   end
-end

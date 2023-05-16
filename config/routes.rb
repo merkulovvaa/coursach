@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :patients
   devise_for :doctors
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -21,12 +20,9 @@ Rails.application.routes.draw do
   root "pages#home"
 
   namespace :patients do
-    resources :doctors
-  end
-
-  namespace :patients do
     resources :appointments
     post '/appointments/appointment_date', to: 'appointments#appointment_date', as: 'appointment_date'
+    resources :doctors
   end
 
   resources :outpatient_cards
