@@ -12,7 +12,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new(appointment_params.except(:analysis_ids))
+    @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
       redirect_to @appointment
@@ -28,18 +28,7 @@ class AppointmentsController < ApplicationController
   def update
     @appointment = Appointment.find(params[:id])
 
-    if @appointment.update(appointment_params.except(:analysis_ids))
-      if params[:commit] == "Finish Appointment"
-        @appointment.update(status: 1)
-      end
-      if params[:commit] == "Cancel Appointment"
-        @appointment.update(status: -1)
-      end
-      if appointment_params[:analysis_ids].present?
-        appointment_params[:analysis_ids].each do |analysis_id|
-          PatientAnalysis.create(analysis_date: @appointment.appointment_date, analysis_id: analysis_id, appointment_id: @appointment.id)
-        end
-      end
+    if @appointment.update(appointment_params)
       redirect_to @appointment
     else
       render :edit
@@ -56,6 +45,6 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:doctor_id, :outpatient_card_id, :appointment_date, :report, analysis_ids: [])
+    params.require(:appointment).permit(:doctor_id, :outpatient_card_id, :appointment_date, :report)
   end
 end

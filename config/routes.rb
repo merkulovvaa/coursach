@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     resources :doctors
   end
 
+  namespace :doctors do
+    resources :appointments
+  end
+
   resources :outpatient_cards
   resources :patient_analyses
   resources :analyses
