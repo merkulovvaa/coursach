@@ -18,17 +18,17 @@
 
   <div>
     <%= form.label :gender_id, style: "display: block" %>
-    <%= form.text_field :gender_id %>
+    <%= form.collection_select :gender_id, Gender.all, :id, :name_gender %>
   </div>
 
   <div>
     <%= form.label :spec_id, style: "display: block" %>
-    <%= form.text_field :spec_id %>
+    <%= form.collection_select :spec_id, Spec.all, :id, :name_spec %>
   </div>
 
   <div>
     <%= form.label :department_id, style: "display: block" %>
-    <%= form.text_field :department_id %>
+    <%= form.collection_select :department_id, Department.all, :id, :name_depart %>
   </div>
 
   <div>

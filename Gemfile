@@ -30,6 +30,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem 'activeadmin'
+gem 'active_material'
 
 gem 'devise'
 gem 'pundit'

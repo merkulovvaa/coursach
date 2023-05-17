@@ -6,17 +6,17 @@
 
   <p>
     <strong>Gender:</strong>
-    <%= doctor.gender_id %>
+    <%= Gender.find_by(id: doctor.gender_id).name_gender %>
   </p>
 
   <p>
     <strong>Spec:</strong>
-    <%= doctor.spec_id %>
+    <%= Spec.find_by(id: doctor.spec_id).name_spec %>
   </p>
 
   <p>
     <strong>Department:</strong>
-    <%= doctor.department_id %>
+    <%= Department.find_by(id: doctor.department_id).name_depart %>
   </p>
 
   <p>
