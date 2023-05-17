@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     allow_list = [root_path, new_patient_session_path, new_doctor_session_path, new_patient_registration_path,
-                  edit_patient_registration_path, new_admin_user_session_path]
+                  cancel_patient_registration_path, new_patient_password_path, new_doctor_password_path,
+                  edit_patient_registration_path, new_admin_user_session_path, new_admin_user_password_path]
     redirect_to root_path unless allow_list.include?(request.path) || patient_signed_in? || doctor_signed_in?
   end
 

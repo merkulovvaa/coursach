@@ -1,6 +1,6 @@
 <h1>Finishing appointment</h1>
 
-<%= form_for(@appointment) do |f| %>
+<%= form_for(@appointment, url: doctors_appointment_path(@appointment)) do |f| %>
   <div>
     <%= f.label :report %>
     <%= f.text_area :report %>
@@ -25,6 +25,5 @@
 <% end %>
 
 <div>
-  <%= link_to "Show this appointment", @appointment %> |
   <%= link_to "Back to home page", doctor_root_path %>
 </div>

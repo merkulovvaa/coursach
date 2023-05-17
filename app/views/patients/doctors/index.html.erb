@@ -4,7 +4,9 @@
 
 <div id="doctors">
   <% @doctors.each do |doctor| %>
-    <%= render doctor %>
-    <%= link_to 'Записаться на прием', new_patients_appointment_path(doctor_id: doctor.id), class: 'btn btn-primary' %>
+      <% if doctor.active? %>
+        <%= render doctor %>
+        <%= link_to 'Записаться на прием', new_patients_appointment_path(doctor_id: doctor.id), class: 'btn btn-primary' %>
+      <% end %>
     <% end %>
 </div>
