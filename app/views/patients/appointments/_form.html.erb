@@ -1,4 +1,4 @@
-<%= form_with(model: appointment,url: "/patients/appointments/#{@appointment.id}") do |form| %>
+<%= form_with(model: appointment, url: patients_appointment_date_path, method: :post) do |form| %>
   <div>
     <%= form.label :doctor_id, style: "display: block" %>
     <% if @selected_doctor %>

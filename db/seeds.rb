@@ -5,36 +5,36 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+#
+# Gender.create!(name_gender: 'Female')
+# Gender.create!(name_gender: 'Male')
+#
+# Category.create!(category_name: 'First category')
+# Category.create!(category_name: 'Second category')
+# Category.create!(category_name: 'Highest category')
+#
+# Spec.create!(name_spec: "Dermatologist")
+# Spec.create!(name_spec: "Gynecologist")
+# Spec.create!(name_spec: "Nutritionist")
+# Spec.create!(name_spec: "Cardiologist")
+# Spec.create!(name_spec: "Neurologist")
+# Spec.create!(name_spec: "Orthopedist")
+# Spec.create!(name_spec: "Oncologist")
+# Spec.create!(name_spec: "ENT")
+# Spec.create!(name_spec: "Psychiatrist")
+# Spec.create!(name_spec: "Surgeon")
+# Spec.create!(name_spec: "Gastroenterologist")
+# Spec.create!(name_spec: "Endocrinologist")
+#
+# Department.create!(name_depart: 'Surgical department')
+# Department.create!(name_depart: 'Gynecological department')
+# Department.create!(name_depart: 'Therapeutic department')
+# Department.create!(name_depart: 'Cardiology department')
+# Department.create!(name_depart: 'Psychosomatic department')
+# Department.create!(name_depart: 'Endocrinological department')
+# Department.create!(name_depart: 'Gastroenterological department')
 
-Gender.create!(name_gender: 'Female')
-Gender.create!(name_gender: 'Male')
-
-Category.create!(category_name: 'First category')
-Category.create!(category_name: 'Second category')
-Category.create!(category_name: 'Highest category')
-
-Spec.create!(name_spec: "Dermatologist")
-Spec.create!(name_spec: "Gynecologist")
-Spec.create!(name_spec: "Nutritionist")
-Spec.create!(name_spec: "Cardiologist")
-Spec.create!(name_spec: "Neurologist")
-Spec.create!(name_spec: "Orthopedist")
-Spec.create!(name_spec: "Oncologist")
-Spec.create!(name_spec: "ENT")
-Spec.create!(name_spec: "Psychiatrist")
-Spec.create!(name_spec: "Surgeon")
-Spec.create!(name_spec: "Gastroenterologist")
-Spec.create!(name_spec: "Endocrinologist")
-
-Department.create!(name_depart: 'Surgical department')
-Department.create!(name_depart: 'Gynecological department')
-Department.create!(name_depart: 'Therapeutic department')
-Department.create!(name_depart: 'Cardiology department')
-Department.create!(name_depart: 'Psychosomatic department')
-Department.create!(name_depart: 'Endocrinological department')
-Department.create!(name_depart: 'Gastroenterological department')
-
-30.times do
+30.times do |index|
   Doctor.create!(
     full_name: Faker::Name.name,
     email: "doctor#{index+1}@mail.com",
@@ -48,7 +48,7 @@ Department.create!(name_depart: 'Gastroenterological department')
   )
 end
 
-5.times do
+5.times do |index|
   patient = Patient.create!(
     full_name: Faker::Name.name,
     address: Faker::Address.full_address,

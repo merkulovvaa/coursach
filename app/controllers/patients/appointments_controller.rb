@@ -45,7 +45,6 @@ class Patients::AppointmentsController < ApplicationController
       @appointment = Appointment.find(params[:id])
 
       if @appointment.update(appointment_params)
-        @appointment.doctor.update_rating if @appointment.finished?
         redirect_to patients_appointment_path(@appointment)
       else
         render :edit
@@ -57,6 +56,11 @@ class Patients::AppointmentsController < ApplicationController
       @appointment.canceled!
 
       redirect_to patients_appointments_path
+    end
+
+    def update_rating
+      @appointment = Appointment.find(params[:id])
+      @appointment.doctor.update_rating if @appointment.finished?
     end
 
     private

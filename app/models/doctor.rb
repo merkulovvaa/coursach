@@ -52,6 +52,10 @@ class Doctor < ApplicationRecord
     update_column(:rating, appointments.finished.average(:rating))
   end
 
+  def experience_years
+    start_working_date.present? ? (Date.today - start_working_date).to_i / 365 : 0
+  end
+
   scope :by_spec, ->(name_spec) { joins(:spec).where(spec: { name_spec: name_spec })}
 
   delegate :name_gender, to: :gender, prefix: true, allow_nil: true
