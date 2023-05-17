@@ -1,4 +1,4 @@
-<%= form_with(model: appointment, url: patients_appointment_date_path, method: :post) do |form| %>
+<%= form_with(model: @appointment,url: "/patients/appointments/#{@appointment.id}") do |form| %>
   <div>
     <%= form.label :doctor_id, style: "display: block" %>
     <% if @selected_doctor %>
@@ -17,7 +17,7 @@
   </div>
 
   <%= form.label :appointment_date, style: "display: block" %>
-  <%= form.select :appointment_date, options_for_select(@available_dates), {}, {class: 'form-control'} %>
+  <%= form.date_field :appointment_date, readonly: true %>
 
   <div>
     <%= form.hidden_field :report, readonly: true %>
@@ -27,9 +27,13 @@
     <%= form.hidden_field :status, readonly: true %>
   </div>
 
+  <% if @appointment.finished? %>
+    <div class="field">
+      <%= form.label :rating %>
+      <%= form.select :rating, (1..5).map { |n| [n, n] }, prompt: "Select rating", include_blank: true %>
+    </div>
+  <% end %>
   <div>
-    <%= form.submit 'Submit', disabled: @available_dates.empty? %>
+    <%= form.submit %>
   </div>
-
-
 <% end %>

@@ -17,8 +17,8 @@
   </div>
 
   <div>
-    <%= form.label :gender_id, style: "display: block" %>
-    <%= form.text_field :gender_id %>
+    <%= form.label :gender_id, "Gender", style: "display: block" %>
+    <%= form.collection_select :gender_id, Gender.all, :id, :name_gender %>
   </div>
 
   <div>
@@ -41,10 +41,10 @@
     <%= form.text_field :email %>
   </div>
 
-  <div>
-    <%= form.label :outpatient_card_id, style: "display: block" %>
-    <%= form.text_field :outpatient_card_id %>
-  </div>
+<!--  <div>-->
+    <%#= form.label :outpatient_card_id, style: "display: block" %>
+    <%#= form.text_field :outpatient_card_id %>
+<!--  </div>-->
 
   <div>
     <%= form.submit %>

@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :analysis_id, style: "display: block" %>
-    <%= form.text_field :analysis_id %>
+    <%= form.label :analysis_id,"Analysis", style: "display: block" %>
+    <%= form.collection_select :analysis_id, Analysis.all, :id, :name_analysis %>
   </div>
 
   <div>

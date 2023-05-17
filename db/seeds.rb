@@ -34,7 +34,7 @@ Department.create!(name_depart: 'Psychosomatic department')
 Department.create!(name_depart: 'Endocrinological department')
 Department.create!(name_depart: 'Gastroenterological department')
 
-30.times do
+30.times do |index|
   Doctor.create!(
     full_name: Faker::Name.name,
     email: "doctor#{index+1}@mail.com",
@@ -48,7 +48,7 @@ Department.create!(name_depart: 'Gastroenterological department')
   )
 end
 
-5.times do
+5.times do |index|
   patient = Patient.create!(
     full_name: Faker::Name.name,
     address: Faker::Address.full_address,

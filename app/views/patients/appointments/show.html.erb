@@ -4,7 +4,11 @@
 
 <div>
   <%= link_to "Back to appointments", patients_appointments_path %>
-  <%= link_to "Rating", controller: "patients/appointments", action: "edit", id: @appointment.id %>
+  <% if @appointment.finished? %>
+    <%= link_to "Rating", controller: "patients/appointments", action: "update_rating", id: @appointment.id %>
+  <% end %>
 
-  <%= button_to "Cancel this appointment", "/patients/appointments/#{@appointment.id}", method: :delete %>
+  <% unless @appointment.finished? || @appointment.canceled? %>
+    <%= button_to "Cancel this appointment", "/patients/appointments/#{@appointment.id}", method: :delete %>
+  <% end %>
 </div>

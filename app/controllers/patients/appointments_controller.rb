@@ -52,6 +52,11 @@ class Patients::AppointmentsController < ApplicationController
       end
     end
 
+    def update_rating
+      @appointment = Appointment.find(params[:id])
+      @appointment.doctor.update_rating if @appointment.finished?
+    end
+
     def destroy
       @appointment = Appointment.find(params[:id])
       @appointment.canceled!

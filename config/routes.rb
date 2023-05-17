@@ -20,8 +20,12 @@ Rails.application.routes.draw do
   root "pages#home"
 
   namespace :patients do
-    resources :appointments
+    resources :appointments do
     post '/appointments/appointment_date', to: 'appointments#appointment_date', as: 'appointment_date'
+    member do
+      get :update_rating
+    end
+    end
     resources :doctors
   end
 
