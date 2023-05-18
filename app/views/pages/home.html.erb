@@ -1,3 +1,70 @@
-<%= button_to "Войти как врач", new_doctor_session_path, method: :get %>
+<body>
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid justify-content-center">
+    <a class="navbar-brand text-center">
+      <img src="/pngwing.com.png" alt="Logo" width="30" height="30">
+      MonkeyClinic
+    </a>
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title login-title" id="offcanvasNavbarLabel">Login to your account</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <%= button_to "I am Doctor", new_doctor_session_path, method: :get, class: "btn btn-monkey mb-2" %>
+        <%= button_to "I am Patient", new_patient_session_path, method: :get, class: "btn btn-monkey" %>
+      </div>
+    </div>
+  </div>
+</nav>
 
-<%= button_to "Войти как пациент", new_patient_session_path, method: :get %>
+  <div class="content-container">
+    <p class="ms-2 login-title">Welcome to our Clinic!</p>
+    <p>Thank you for choosing us. At our clinic, we are committed to providing exceptional healthcare</p>
+    <p>and promoting the well-being of our patients. We look forward to serving you with utmost dedication,</p>
+    <p>expertise, and compassion.</p>
+    <p>Warm regards,</p>
+    <p>The Team at Monkey Clinic</p>
+  </div>
+
+  <div class="row">
+    <!-- Часть с информацией о докторе -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center mt-5">
+      <div class="text-container bg-white rounded-lg shadow">
+        <div class="text-content">
+          <p class="ms-2 login-title">The Doctor can</p>
+          <ul class="ms-2 text-container">
+            <p>✔ View the list of appointments</p>
+            <p>✔ To give recommendations to the patient</p>
+            <p>✔ To give appointments to the patient for analysis</p>
+          </ul>
+        </div>
+      </div>
+      <div class="image-container">
+        <img src="/doctor_home.png" alt="doctor_home" width="250" height="250">
+      </div>
+    </div>
+
+    <!-- Часть с информацией о пациенте -->
+    <div class="col-md-6 d-flex align-items-center justify-content-center mt-5">
+      <div class="text-container bg-white rounded-lg shadow">
+        <div class="text-content">
+          <p class="ms-2 login-title">The Patient can</p>
+          <ul class="ms-2 text-container">
+            <p>✔ To make an appointment with a doctor</p>
+            <p>✔ To get recommendations quickly</p>
+            <p>✔ View their appointments</p>
+            <p>✔ View purposed analyses</p>
+          </ul>
+        </div>
+      </div>
+      <div class="image-container">
+        <img src="/patient_home.png" alt="patient_home" width="220" height="250">
+      </div>
+    </div>
+  </div>
+
+</body>

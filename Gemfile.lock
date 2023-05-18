@@ -82,9 +82,15 @@ GEM
     arbre (1.5.0)
       activesupport (>= 3.0.0, < 7.1)
       ruby2_keywords (>= 0.0.2, < 1.0)
+    autoprefixer-rails (10.4.13.0)
+      execjs (~> 2)
     bcrypt (3.1.18)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    bootstrap (5.3.0.alpha3)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.11.7, < 3)
+      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     chronic (0.10.2)
     concurrent-ruby (1.2.2)
@@ -100,6 +106,7 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.12.0)
+    execjs (2.8.1)
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
@@ -173,6 +180,8 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.5.3)
+    pg (1.5.3-x64-mingw-ucrt)
+    popper_js (2.11.7)
     puma (5.6.5)
       nio4r (~> 2.0)
     pundit (2.3.0)
@@ -267,6 +276,7 @@ DEPENDENCIES
   activeadmin
   annotate
   bootsnap
+  bootstrap (~> 5.3.0.alpha3)
   debug
   devise
   faker
@@ -286,7 +296,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.1.3p185
 
 BUNDLED WITH
    2.4.10
