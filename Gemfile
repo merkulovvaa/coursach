@@ -32,6 +32,8 @@ gem "jbuilder"
 gem 'activeadmin'
 gem 'active_material'
 
+gem 'whenever', require: false
+
 gem 'devise'
 gem 'pundit'
 
