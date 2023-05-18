@@ -40,7 +40,7 @@ class Appointment < ApplicationRecord
   validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, allow_nil: true
 
   def self.cancel_all
-    appointments = Appointment.where(status: 0).where('start_time <= ?', Time.zone.today.end_of_day)
+    appointments = Appointment.where(status: 0).where('app_time <= ?', Time.zone.today.end_of_day)
     appointments.update_all(status: -1)
   end
 end
