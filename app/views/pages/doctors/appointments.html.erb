@@ -65,7 +65,7 @@
       <h5>Patient's name | Date&Time</h5>
       <ul>
         <% current_doctor.appointments.where('appointment_date > ?', Date.today).where(status: "active").each do |appointment| %>
-          <li><%= appointment.outpatient_card.patient.full_name %> <%= appointment.appointment_date %></li>
+          <li><%= link_to appointment.outpatient_card.patient.full_name, doctors_patient_path(appointment.outpatient_card.patient) %> <%= appointment.appointment_date %></li>
         <% end %>
       </ul>
     <% else %>

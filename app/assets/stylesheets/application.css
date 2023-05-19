@@ -16,14 +16,17 @@
 .navbar {
     background-color: #7eaa57; /* Замените #009688 на свой код цвета $teal-200 */
 }
-     /* Стили для кнопок */
- .btn-monkey {
+
+.btn-monkey {
      background-color: #7eaa57;
      color: #fff;
      border-color: #7eaa57;
- }
+}
 
-/* Стили для надписи "Login" */
+.custom-link {
+    color: #7eaa57;
+}
+
 .login-title {
     display: flex;
     justify-content: center;
@@ -35,7 +38,6 @@
     line-height: 1.2;
 }
 
-/* Стили для названия "Monkey" */
 .navbar-brand {
     color: #fff;
     font-weight: bold;
@@ -60,6 +62,18 @@
     margin-top: 70px;
     color: #141514;
     font-size: 20px;
+    font-weight: bold;
+}
+
+.text-container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 60px;
+    margin-top: 80px;
+    color: #141514;
+    font-size: 35px;
     font-weight: bold;
 }
 
