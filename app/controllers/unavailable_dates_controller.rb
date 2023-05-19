@@ -21,7 +21,7 @@ class UnavailableDatesController < ApplicationController
       end_date = Date.parse(params[:unavailable_date][:end_date])
       wanted_amount = (end_date - start_date).to_i
       if available_amount_of_days < wanted_amount
-        flash[:error] = "Вы не можете взять больше #{available_amount_of_days} дней отпуска"
+        flash[:error] = "You can't take more than #{available_amount_of_days} days of vacation"
         redirect_to new_unavailable_date_path
         return
       end
