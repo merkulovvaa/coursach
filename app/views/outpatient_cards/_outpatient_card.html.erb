@@ -1,12 +1,19 @@
 <div id="<%= dom_id outpatient_card %>">
   <p>
     <strong>Patient:</strong>
-    <%= outpatient_card.patient_id %>
+      <%= link_to Patient.find(outpatient_card.patient_id).full_name, doctors_patient_path(outpatient_card.patient_id), style: "color: #7eaa57;" %>
   </p>
 
-<!--  <p>-->
-<!--    <strong>Appointment:</strong>-->
-    <%#= outpatient_card.appointment_id %>
-<!--  </p>-->
+  <% if outpatient_card.appointments.any? %>
+    <p><strong>Appointments of all times:</strong></p>
+    <ul class="app-outpatient_card_info-container mt-2 mb-2">
+          <% outpatient_card.appointments.each do |appointment| %>
+            <li class="mt-1">
+              <%= link_to appointment.appointment_date, doctors_appointment_path(appointment), style: "color: #7eaa57;" %> -
+              <%= link_to appointment.doctor.full_name, doctor_path(appointment.doctor), style: "color: #7eaa57;" %>
+            </li>
+          <% end %>
+    </ul>
+  <% end %>
 
 </div>

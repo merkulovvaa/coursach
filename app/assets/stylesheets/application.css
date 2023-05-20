@@ -103,6 +103,7 @@
     overflow: auto;
     box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
 }
+
 .next_day_appointments {
     padding: 10px;
     margin-left: 30px;
@@ -167,4 +168,101 @@
     font-weight: bold;
     margin-bottom: 20px;
     margin-left: 10px;
+}
+
+.show_appointment_container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+.appointment_info_container {
+    background-color: #f8f8f8;
+    padding: 30px;
+    margin-top: 100px;
+    margin-left: 300px;
+    width: 500px;
+    height: 260px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+
+.appointment_edit_container {
+    background-color: #f8f8f8;
+    padding: 30px;
+    margin-top: 50px;
+    margin-left: 300px;
+    width: 500px;
+    height: 490px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+
+.app-edit-form-group {
+    margin-bottom: 20px;
+}
+
+.app-edit-form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.app-edit-analysis-container {
+    margin-left: 10px;
+    padding: 7px;
+    width: 420px;
+    height: 100px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.app-edit-form-group {
+    margin-bottom: 10px;
+}
+
+.app-back-home-page {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.app-all-text {
+    margin-top: 20px;
+    margin-left: 400px;
+    opacity: 80%;
+    font-size: 35px;
+}
+
+.app-edit-analysis-checkbox {
+    display: block;
+    margin-bottom: 8px;
+}
+.card-all-text {
+    margin-top: 20px;
+    margin-left: 380px;
+    opacity: 80%;
+    font-size: 35px;
+}
+.outpatient_card_info_container {
+    background-color: #f8f8f8;
+    padding: 30px;
+    margin-top: 100px;
+    margin-left: 300px;
+    width: 500px;
+    height: 300px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+
+.app-outpatient_card_info-container {
+    margin-left: 10px;
+    padding: 7px;
+    width: 420px;
+    height: 110px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
 }
