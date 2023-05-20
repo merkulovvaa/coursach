@@ -49,18 +49,19 @@
 }
 
 .text-container {
-    color: #141514;
+    color: rgba(20, 21, 20, 0.88);
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 10px;
 }
+
 .content-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 70px;
-    color: #141514;
+    color: rgba(20, 21, 20, 0.88);
     font-size: 20px;
     font-weight: bold;
 }
@@ -81,7 +82,8 @@
     margin-bottom: 1px;
 }
 
-.indented-paragraph {    padding-left: 20px; /* Adjust the value as needed */
+.indented-paragraph {
+padding-left: 20px; /* Adjust the value as needed */
 }
 
 .btn-all {    background-color: white;
@@ -453,4 +455,8 @@
     height: 240px;
     overflow: auto;
     box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+
+.gap-container{
+    margin-top: 10vh;
 }

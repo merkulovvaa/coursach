@@ -1,14 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
+<div class = 'gap-container'>
+<div class = 'text1-container'>
 <h1>Patients</h1>
-
-<div id="patients">
+</div>
+</div>
+<div class="row">
   <% @patients.each do |patient| %>
-    <%= render patient %>
-    <p>
-      <%= link_to "Show this patient", patient %>
-    </p>
+    <div class="col-md-3">
+      <%= render patient %>
+      <p>
+        <%= link_to "Show this patient", patient %>
+      </p>
+    </div>
   <% end %>
 </div>
-
-<%#= link_to "New patient", new_patient_path %>

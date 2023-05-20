@@ -1,13 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Appointments</h1>
-
-<div id="appointments">
+<div class="container gap_container">
+  <div class="row">
   <% @appointments.each do |appointment| %>
+      <div class="col-md-4">
     <%= render appointment %>
     <p>
-      <%= link_to "Show this appointment", controller: "patients/appointments", action: "show", id: appointment.id %>
+      <%= link_to "Show this appointment", controller: "patients/appointments", action: "show", id: appointment.id, class: 'btn btn-monkey ms-5', style: "color: black"%>
     </p>
+      </div>
   <% end %>
 </div>
-
+</div>

@@ -2,7 +2,7 @@ class DoctorsController < ApplicationController
   before_action :authenticate_doctor!
 
   def index
-    @doctors = Doctor.all
+    @doctors = Doctor.all.order(:rating)
   end
 
   def show
@@ -47,6 +47,6 @@ class DoctorsController < ApplicationController
   private
 
   def doctor_params
-    params.require(:doctor).permit(:full_name, :email, :gender_id, :spec_id, :department_id, :start_working_date, :avatar)
+    params.require(:doctor).permit(:full_name, :email, :gender_id, :spec_id, :department_id, :start_working_date, :avatar, :rating)
   end
 end
