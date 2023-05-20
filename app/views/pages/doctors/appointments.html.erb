@@ -1,77 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-      nav {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          background-color: #f8f8f8;
-          padding: 10px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-      ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-      }
-      li {
-          margin-right: 10px;
-      }
-      a {
-          text-decoration: none;
-          color: #333;
-      }
-      .container ul {
-          margin-top: 10px;
-      }
-      nav ul {
-          display: flex;
-          flex-direction: row;
-      }
-
-      nav li {
-          margin-right: 10px;
-      }
-      .container ul {
-          margin-top: 10px;
-      }
-      .appointments ul {
-          display: flex;
-          flex-direction: column;
-          list-style: none;
-          margin: 0;
-          padding: 0;
-      }
-
-      .appointments li {
-          margin-bottom: 10px;
-      }
-  </style>
-</head>
 <body>
-<header>
-  <nav>
-    <ul>
-      <li><%= link_to current_doctor.full_name, doctor_path(current_doctor) %></li>
-      <li><%= link_to 'Settings', edit_doctor_path(current_doctor) %></li>
-    </ul>
-  </nav>
-</header>
-<main>
-  <main class="appointments">
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid justify-content-center">
+    <a class="navbar-brand text-center">
+      <img src="/pngwing.com.png" alt="Logo" width="30" height="30">
+      MonkeyClinic
+    </a>
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title login-title" id="offcanvasNavbarLabel"><%= link_to current_doctor.full_name, doctor_path(current_doctor), style: "color: #7eaa57;"%> </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="d-flex flex-column indented-paragraph">
+        <%= button_to "Settings", edit_doctor_path(current_doctor), method: :get, class: "btn btn-all mb-2" %>
+        <%= button_to "Logout", destroy_doctor_session_path, method: :delete, class: "btn btn-monkey" %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="doctor_root_container">
+  <div class="next_day_appointments">
     <% if current_doctor.appointments.where('appointment_date > ?', Date.today).where(status: "active").any? %>
-      <h5>Patient's name | Date&Time</h5>
-      <ul>
-        <% current_doctor.appointments.where('appointment_date > ?', Date.today).where(status: "active").each do |appointment| %>
-          <li><%= link_to appointment.outpatient_card.patient.full_name, doctors_patient_path(appointment.outpatient_card.patient), style: "color: #7eaa57;"%> <%= appointment.appointment_date %></li>
-        <% end %>
-      </ul>
+      <% current_doctor.appointments.where('appointment_date > ?', Date.today).where(status: "active").order(appointment_date: :asc).group_by(&:appointment_date).each do |date, appointments| %>
+        <h5 class="mt-2"><%= date %></h5>
+        <table class="appointments-table">
+          <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Time</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% appointments.sort_by{ |appointment| [appointment.app_time.hour, appointment.app_time.min] }.each do |appointment| %>
+            <tr>
+              <td><%= link_to appointment.outpatient_card.patient.full_name, doctors_patient_path(appointment.outpatient_card.patient), style: "color: #7eaa57;"%></td>
+              <td><%= appointment.app_time.in_time_zone("Kyiv").strftime("%H:%M") %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
     <% else %>
-      <p>Нет записей на прием.</p>
+      <div class="text-for-no-app">No appointments for next days.</div>
     <% end %>
-  </main>
-</main>
+  </div>
+</div>
+<%= link_to "Back to home page", doctor_root_path, style: "color: #7eaa57; margin-left: 70px;" %>
 </body>
 </html>

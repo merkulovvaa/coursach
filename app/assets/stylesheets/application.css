@@ -103,6 +103,14 @@
     overflow: auto;
     box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
 }
+.next_day_appointments {
+    padding: 10px;
+    margin-left: 30px;
+    width: 500px;
+    height: 450px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
 .text-for-no-app{
     margin-left: 30px;
     opacity: 80%;
