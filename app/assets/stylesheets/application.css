@@ -251,7 +251,7 @@
     margin-top: 100px;
     margin-left: 300px;
     width: 500px;
-    height: 300px;
+    height: 400px;
     overflow: auto;
     box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
 }
@@ -260,7 +260,18 @@
     margin-left: 10px;
     padding: 7px;
     width: 420px;
-    height: 110px;
+    height: 200px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.app-outpatient_card-analysis_info-container {
+    margin-left: 10px;
+    padding: 7px;
+    width: 250px;
+    height: 60px;
     overflow: auto;
     box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
     display: flex;

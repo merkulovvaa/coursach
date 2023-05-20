@@ -11,6 +11,16 @@
             <li class="mt-1">
               <%= link_to appointment.appointment_date, doctors_appointment_path(appointment), style: "color: #7eaa57;" %> -
               <%= appointment.doctor.full_name %>
+              <% if appointment.patient_analysis.any? %>
+                <h5>Analysis for appointment:</h5>
+                <ul class="app-outpatient_card-analysis_info-container mt-2 mb-2">
+                  <% appointment.patient_analysis.each do |analyses| %>
+                    <li class="mt-1">
+                      <%= Analysis.find(analyses.analysis_id).name_analysis %>
+                    </li>
+                  <% end %>
+                </ul>
+                <% end %>
             </li>
           <% end %>
     </ul>

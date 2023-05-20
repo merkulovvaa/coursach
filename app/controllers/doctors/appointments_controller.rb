@@ -7,11 +7,6 @@ class Doctors::AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
-    if @appointment.doctor_id == current_doctor.id
-      @eppointment
-    else
-      redirect_to doctor_root_path
-    end
   end
 
   def new
