@@ -45,7 +45,7 @@ class UnavailableDatesController < ApplicationController
   end
 
   def edit
-    @unavailable_date = UnavailableDate.find(params[:id])
+    redirect_to doctor_root_path
   end
 
   def update

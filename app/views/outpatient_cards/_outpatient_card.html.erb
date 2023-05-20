@@ -10,7 +10,7 @@
           <% outpatient_card.appointments.each do |appointment| %>
             <li class="mt-1">
               <%= link_to appointment.appointment_date, doctors_appointment_path(appointment), style: "color: #7eaa57;" %> -
-              <%= link_to appointment.doctor.full_name, doctor_path(appointment.doctor), style: "color: #7eaa57;" %>
+              <%= appointment.doctor.full_name %>
             </li>
           <% end %>
     </ul>

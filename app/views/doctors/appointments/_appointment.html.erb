@@ -3,7 +3,7 @@
   <div class="appointment-container">
     <p>
       <strong>Doctor:</strong>
-      <%= link_to Doctor.find(appointment.doctor_id).full_name, doctor_path(appointment.doctor_id), style: "color: #7eaa57;" %>
+      <%= Doctor.find(appointment.doctor_id).full_name %>
     </p>
 
     <p>

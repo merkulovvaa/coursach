@@ -1,10 +1,17 @@
 class Doctors::AppointmentsController < ApplicationController
+  before_action :authenticate_doctor!
+
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.all.where(doctor_id: current_doctor)
   end
 
   def show
     @appointment = Appointment.find(params[:id])
+    if @appointment.doctor_id == current_doctor.id
+      @eppointment
+    else
+      redirect_to doctor_root_path
+    end
   end
 
   def new
@@ -23,6 +30,11 @@ class Doctors::AppointmentsController < ApplicationController
 
   def edit
     @appointment = Appointment.find(params[:id])
+    if @appointment.doctor_id == current_doctor.id
+      @eppointment
+    else
+      redirect_to doctor_root_path
+    end
   end
 
   def update
