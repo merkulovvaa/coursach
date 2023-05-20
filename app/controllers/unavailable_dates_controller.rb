@@ -1,10 +1,16 @@
 class UnavailableDatesController < ApplicationController
+  before_action :authenticate_doctor!
   def index
-    @unavailable_dates = UnavailableDate.all
+    @unavailable_dates = UnavailableDate.all.where(doctor_id: current_doctor.id)
   end
 
   def show
-    @unavailable_date = UnavailableDate.find(params[:id])
+    date = UnavailableDate.find(params[:id])
+    if date.doctor_id == current_doctor.id
+      @unavailable_date = UnavailableDate.find(params[:id])
+    else
+      redirect_to doctor_root_path
+    end
   end
 
   def new

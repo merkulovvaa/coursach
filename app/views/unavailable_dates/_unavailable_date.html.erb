@@ -11,12 +11,16 @@
 
   <p>
     <strong>Doctor:</strong>
-    <%= unavailable_date.doctor_id %>
+    <%= Doctor.find(unavailable_date.doctor_id).full_name %>
   </p>
 
   <p>
     <strong>Leave type:</strong>
-    <%= unavailable_date.leave_type %>
+    <% if unavailable_date.leave_type == "sick_leave" %>
+      <%= "sick leave" %>
+    <% else %>
+      <%= "vacation" %>
+    <% end %>
   </p>
 
 </div>

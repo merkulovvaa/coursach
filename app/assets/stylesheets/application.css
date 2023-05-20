@@ -372,3 +372,74 @@
     opacity: 80%;
     font-size: 35px;
 }
+.patient-for-doctor_info_container {
+    background-color: #f8f8f8;
+    padding: 35px;
+    margin-top: 30px;
+    margin-left: 300px;
+    width: 500px;
+    height: 550px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+.patients-for-doctors-all-text{
+    margin-left: 450px;
+    opacity: 80%;
+    font-size: 35px;
+}
+
+.unavailable-dates-for-doctor_info_container {
+    background-color: #f8f8f8;
+    padding: 35px;
+    margin-top: 30px;
+    margin-left: 300px;
+    width: 500px;
+    height: 550px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+.unavailable-dates-for-doctors-all-text{
+    margin-left: 390px;
+    opacity: 80%;
+    font-size: 35px;
+}
+
+.unavailable-dates-form_container {
+    background-color: #f8f8f8;
+    padding: 40px;
+    margin-top: 50px;
+    margin-left: 300px;
+    width: 500px;
+    height: 465px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.unvdatestext {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 80%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.unavailable-date-for-doctor_info_container {
+    background-color: #f8f8f8;
+    padding: 20px;
+    padding-left: 40px;
+    margin-top: 50px;
+    margin-left: 350px;
+    width: 400px;
+    height: 240px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}

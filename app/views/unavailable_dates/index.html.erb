@@ -1,14 +1,19 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Unavailable dates</h1>
-
-<div id="unavailable_dates">
-  <% @unavailable_dates.each do |unavailable_date| %>
-    <%= render unavailable_date %>
-    <p>
-      <%= link_to "Show this unavailable date", unavailable_date %>
-    </p>
-  <% end %>
+<div class="app-back-home-page">
+  <%= link_to "Back to home page", doctor_root_path, style: "color: #7eaa57;" %>
 </div>
+<div class="container mb-5">
+    <p style="color: green"><%= notice %></p>
 
-<%= link_to "New unavailable date", new_unavailable_date_path %>
+    <h1 class="unavailable-dates-for-doctors-all-text">Unavailable dates</h1>
+
+    <div id="unavailable_dates">
+      <% @unavailable_dates.each do |unavailable_date| %>
+        <div class="unavailable-date-for-doctor_info_container">
+            <%= render unavailable_date %>
+            <p class="mt-3">
+              <%= link_to "Show this unavailable date", unavailable_date, style: "color: #7eaa57;" %>
+            </p>
+        </div>
+      <% end %>
+    </div>
+</div>
