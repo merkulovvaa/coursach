@@ -45,6 +45,7 @@ class Doctor < ApplicationRecord
   belongs_to :category
   has_many :unavailable_dates
   has_many :appointments
+  has_one_attached :avatar
 
   enum status: { active: 0, inactive: 1 }
 

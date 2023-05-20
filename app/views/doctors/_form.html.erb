@@ -1,47 +1,61 @@
-<%= form_with(model: doctor) do |form| %>
-  <% if doctor.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+<div class="doctor-form-container">
+  <div class="avatar-container1">
+    <% if doctor.avatar.attached? %>
+      <%= image_tag doctor.avatar %>
+    <% else %>
+      <div class="default-avatar"></div>
+    <% end %>
 
-      <ul>
-        <% doctor.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.label :full_name, style: "display: block" %>
-    <%= form.text_field :full_name %>
   </div>
+  <div class="doctor-form-itself">
+    <%= form_with(model: doctor, class: "doctor-form") do |form| %>
+      <% if doctor.errors.any? %>
+        <div class="error-message">
+          <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+          <ul>
+            <% doctor.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-  <div>
-    <%= form.label :gender_id, style: "display: block" %>
-    <%= form.collection_select :gender_id, Gender.all, :id, :name_gender %>
-  </div>
+      <div class="form-row">
+        <%= form.label :full_name %>
+        <%= form.text_field :full_name %>
+      </div>
 
-  <div>
-    <%= form.label :spec_id, style: "display: block" %>
-    <%= form.collection_select :spec_id, Spec.all, :id, :name_spec %>
-  </div>
+      <div class="form-row">
+        <%= form.label :gender_id %>
+        <%= form.collection_select :gender_id, Gender.all, :id, :name_gender %>
+      </div>
 
-  <div>
-    <%= form.label :department_id, style: "display: block" %>
-    <%= form.collection_select :department_id, Department.all, :id, :name_depart %>
-  </div>
+      <div class="form-row">
+        <%= form.label :spec_id %>
+        <%= form.collection_select :spec_id, Spec.all, :id, :name_spec %>
+      </div>
 
-  <div>
-    <%= form.label :start_working_date, style: "display: block" %>
-    <%= form.date_field :start_working_date %>
-  </div>
+      <div class="form-row">
+        <%= form.label :department_id %>
+        <%= form.collection_select :department_id, Department.all, :id, :name_depart %>
+      </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
+      <div class="form-row">
+        <%= form.label :start_working_date %>
+        <%= form.date_field :start_working_date %>
+      </div>
 
-  <div>
-    <%= form.submit %>
+      <div class="form-row">
+        <%= form.label :email %>
+        <%= form.text_field :email %>
+      </div>
+
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar %>
+
+      <div class="form-row mt-3">
+        <%= form.submit %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

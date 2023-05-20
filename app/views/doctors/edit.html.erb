@@ -1,11 +1,14 @@
-<h1>Editing doctor</h1>
+<div class="container">
+  <h1 class="editing-doctor-profile-text">Settings</h1>
 
-<%= render "form", doctor: @doctor %>
+  <div class="edit-doctor-for-doctor_info_container">
+    <%= render "form", doctor: @doctor %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Show this doctor", @doctor %> |
-  <%= link_to "Back to home page", doctor_root_path %>
-  <%#= link_to "Back to doctors", doctors_path %>
+    <div style="float: right; margin-right: 45px;">
+      <%= link_to "Show profile", @doctor, style: "color: #7eaa57;" %> |
+      <%= link_to "Back to home page", doctor_root_path, style: "color: #7eaa57;" %>
+    </div>
+  </div>
 </div>

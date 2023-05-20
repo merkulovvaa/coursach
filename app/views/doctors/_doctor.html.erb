@@ -1,4 +1,13 @@
 <div id="<%= dom_id doctor %>">
+
+  <div class="avatar-container">
+    <% if doctor.avatar.attached? %>
+      <%= image_tag doctor.avatar %>
+    <% else %>
+      <div class="default-avatar"></div>
+    <% end %>
+  </div>
+
   <p>
     <strong>Full name:</strong>
     <%= doctor.full_name %>

@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  end_date   :date
-#  leave_type :integer          default(0)
+#  leave_type :integer          default("sick_leave")
 #  start_date :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

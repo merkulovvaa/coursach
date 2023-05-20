@@ -1,12 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="app-back-home-page">
+  <%= link_to "Back to home page", doctor_root_path, style: "color: #7eaa57;" %>
+</div>
+<div class="container mb-5">
+    <p style="color: green"><%= notice %></p>
 
-<h1>Patients</h1>
+    <h1 class="doctors-for-doctors-all-text">All patients</h1>
 
-<div id="patients">
-  <% @patients.each do |patient| %>
-    <%= render patient %>
-    <p>
-      <%= link_to "Show this patient", patient %>
-    </p>
-  <% end %>
+    <div id="patients">
+      <% @patients.each do |patient| %>
+        <div class="doctor-for-doctor_info_container", style="padding:46px">
+            <%= render patient %>
+            <p>
+              <%= link_to "Show this patient", doctors_patient_path(patient) %>
+            </p>
+        </div>
+      <% end %>
+    </div>
 </div>

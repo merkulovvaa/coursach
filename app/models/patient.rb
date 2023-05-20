@@ -33,4 +33,5 @@ class Patient < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :gender, optional: true
   has_one :outpatient_card, dependent: :destroy
+  has_one_attached :avatar
   end
