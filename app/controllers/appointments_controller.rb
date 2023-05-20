@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.all.order(:appointment_date)
   end
 
   def show

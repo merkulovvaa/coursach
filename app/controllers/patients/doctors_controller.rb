@@ -2,7 +2,7 @@ module Patients
 
   class DoctorsController < ApplicationController
     def index
-      @doctors = Doctor.by_spec(params[:specialty])
+      @doctors = Doctor.by_spec(params[:specialty]).order(:rating)
     end
 
     def show

@@ -1,6 +1,6 @@
 class PatientAnalysesController < ApplicationController
   def index
-    @patient_analyses = PatientAnalysis.all
+    @patient_analyses = PatientAnalysis.all.order(:analysis_date)
   end
 
   def show

@@ -1,37 +1,64 @@
-<div id="<%= dom_id patient %>">
-  <p>
-    <strong>Full name:</strong>
-    <%= patient.full_name %>
-  </p>
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid justify-content-center">
+    <a class="navbar-brand text-center">
+      <img src="/pngwing.com.png" alt="Logo" width="30" height="30">
+      MonkeyClinic
+    </a>
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title login-title" id="offcanvasNavbarLabel"> <%= link_to current_patient.full_name, patient_path(current_patient), style: "color: #7eaa57;" %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="d-flex flex-column indented-paragraph">
+        <form action="<%= patients_appointments_path %>" method="get" class="mb-3">
+          <button type="submit" class="btn btn-all">My Appointments</button>
+        </form>
+        <form action="<%= patient_analyses_path %>" method="get" class="mb-3">
+          <button type="submit" class="btn btn-all">My Analyses</button>
+        </form>
+        <form action="<%= edit_patient_path(current_patient) %>" method="get" class="mb-3">
+          <button type="submit" class="btn btn-all">Settings</button>
+        </form>
+        <%= button_to 'Search',patient_root_path, method: :get,  class: "btn btn-monkey mb-2" %>
+        <%= button_to 'Logout', destroy_patient_session_path, method: :delete,  class: "btn btn-monkey mb-2" %>
+      </div>
+    </div>
+  </div>
+</nav>
 
-  <p>
-    <strong>Sex:</strong>
-    <%= patient.gender.name_gender %>
-  </p>
-
-  <p>
-    <strong>Birth date:</strong>
-    <%= patient.birth_date %>
-  </p>
-
-  <p>
-    <strong>Address:</strong>
-    <%= patient.address %>
-  </p>
-
-  <p>
-    <strong>Phone number:</strong>
-    <%= patient.phone_number %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= patient.email %>
-  </p>
-
-<!--  <p>-->
-<!--    <strong>Outpatient card:</strong>-->
-    <%#= patient.outpatient_card_id %>
-<!--  </p>-->
-
+<div class="myform-container">
+<div class="card" style="width: 40rem;">
+  <img src="/monkey_2.jpg" class="card-img-top" alt="..." width="200" height="150">
+  <div id="<%= dom_id patient %>">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><p>
+      <strong>Full name:</strong>
+      <%= patient.full_name %>
+    </p></li>
+    <li class="list-group-item"><p>
+      <strong>Sex:</strong>
+      <%= patient.gender.name_gender %>
+    </p></li>
+    <li class="list-group-item"><p>
+      <strong>Birth date:</strong>
+      <%= patient.birth_date %>
+    </p></li>
+    <li class="list-group-item"><p>
+      <strong>Address:</strong>
+      <%= patient.address %>
+    </p></li>
+    <li class="list-group-item"><p>
+      <strong>Phone number:</strong>
+      <%= patient.phone_number %>
+    </p></li>
+    <li class="list-group-item"><p>
+      <strong>Email:</strong>
+      <%= patient.email %>
+    </p></li>
+  </ul>
+</div>
+</div>
 </div>

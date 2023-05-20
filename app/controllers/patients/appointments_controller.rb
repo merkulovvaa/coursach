@@ -1,6 +1,6 @@
 class Patients::AppointmentsController < ApplicationController
     def index
-      @appointments = current_patient.outpatient_card.appointments
+      @appointments = current_patient.outpatient_card.appointments.order(:appointment_date)
     end
 
     def show

@@ -1,12 +1,14 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Doctors</h1>
-
+<div class="container gap-container">
 <div id="doctors">
+  <div class="row">
   <% @doctors.each do |doctor| %>
+      <div class="col-md-3">
       <% if doctor.active? %>
         <%= render doctor %>
-        <%= link_to 'Записаться на прием', new_patients_appointment_path(doctor_id: doctor.id), class: 'btn btn-primary' %>
+        <%= link_to 'Make an appointment', new_patients_appointment_path(doctor_id: doctor.id), class: 'btn btn-monkey ms-5', style: "color: black" %>
       <% end %>
+      </div>
     <% end %>
+</div>
+</div>
 </div>
