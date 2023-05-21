@@ -17,7 +17,7 @@ ActiveAdmin.register Patient do
 
   filter :full_name
   filter :email
-  filter :gender, as: :select, collection: Gender.all.map {|g| [g.name_gender, g.id] }
+  # filter :gender, as: :select, collection: Gender.all.map {|g| [g.name_gender, g.id] }
   filter :phone_number
   filter :birth_date
   filter :address
@@ -39,7 +39,7 @@ ActiveAdmin.register Patient do
     f.inputs do
       f.input :full_name
       f.input :email
-      f.input :gender, collection: Gender.all.map {|g| [g.name_gender, g.id] }
+      # f.input :gender, collection: Gender.all.map {|g| [g.name_gender, g.id] }
       f.input :phone_number
       f.input :birth_date
       f.input :address

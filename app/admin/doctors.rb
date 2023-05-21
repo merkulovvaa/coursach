@@ -61,8 +61,8 @@ ActiveAdmin.register Doctor do
     f.actions # Add buttons to submit/save and cancel
   end
 
-  filter :spec, as: :select, collection: Spec.all.map {|s| [s.name_spec, s.id] }
-  # filter :department, as: :select, collection: Department.all.map {|d| [d.name_depart, d.id] }
-  filter :status, as: :select, collection: Doctor.statuses
-  filter :category, as: :select, collection: Category.all.map {|c| [c.category_name, c.id] }
+  # filter :spec, as: :select, collection: Spec.all.map {|s| [s.name_spec, s.id] }
+  # # filter :department, as: :select, collection: Department.all.map {|d| [d.name_depart, d.id] }
+  # filter :status, as: :select, collection: Doctor.statuses
+  # filter :category, as: :select, collection: Category.all.map {|c| [c.category_name, c.id] }
 end
