@@ -284,8 +284,8 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
-  mini_magick
   kaminari
+  mini_magick
   pg
   puma (~> 5.0)
   pundit
@@ -300,7 +300,7 @@ DEPENDENCIES
   whenever
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.1.3p185
 
 BUNDLED WITH
    2.4.10
