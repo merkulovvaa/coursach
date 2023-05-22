@@ -285,6 +285,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mini_magick
+  kaminari
   pg
   puma (~> 5.0)
   pundit

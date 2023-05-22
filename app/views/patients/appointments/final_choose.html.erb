@@ -1,14 +1,17 @@
-<h1>Choose Available Time</h1>
+<div class="container" style="justify-content: center; align-items: center; height: 100vh;">
+  <div style="margin-top: 20vh;">
+<div class ="text-container ms-2">Choose Available Time</div>
 
+<div class="container card">
 <%= form_with(model: @appointment, url: patients_appointments_path) do |form| %>
-  <div>
+  <div class="mb-3">
     <%= form.label :doctor_id, style: "display: block" %>
     <% if @selected_doctor %>
       <%= form.hidden_field :doctor_id, value: @selected_doctor.id, readonly: true %>
-      <div class="field">
+      <div class="field form-text-container mb-2">
         <%= @selected_doctor.full_name %>
       </div>
-      <div class="field">
+      <div class="field form-text-container">
         <%= @selected_doctor.spec.name_spec %>
       </div>
     <% end %>
@@ -34,6 +37,10 @@
   <%= form.select :app_time, options_for_select(@available_times.map { |t| [t.strftime('%H:%M'), t] }), {}, {class: 'form-control'} %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit 'Create Appointment', class: "btn btn-monkey", style: "background-color: #7eaa57; border-radius: 8px;" %>
+
   </div>
 <% end %>
+</div>
+</div>
+</div>

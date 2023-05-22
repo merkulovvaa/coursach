@@ -1,6 +1,8 @@
 class PatientAnalysesController < ApplicationController
   def index
-    @patient_analyses = PatientAnalysis.all.order(:analysis_date)
+    # @patient_analyses = PatientAnalysis.all.page(params[:page]).per(9)
+    @patient_analyses =  PatientAnalysis.joins(appointment: :patient)
+                             .where(patient: { id: current_patient.id }).page(params[:page]).per(9)
   end
 
   def show

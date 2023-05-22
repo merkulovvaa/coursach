@@ -3,12 +3,13 @@
 <%= render @appointment %>
 
 <div>
-  <%= link_to "Back to appointments", patients_appointments_path %>
-  <% if @appointment.finished? %>
-    <%= link_to "Rating", controller: "patients/appointments", action: "update_rating", id: @appointment.id %>
-  <% end %>
-
+<div class="container ms-3 mt-3">
   <% unless @appointment.finished? || @appointment.canceled? %>
-    <%= button_to "Cancel this appointment", "/patients/appointments/#{@appointment.id}", method: :delete %>
+    <%= button_to "Cancel this appointment", "/patients/appointments/#{@appointment.id}", method: :delete, class: "btn btn-monkey mb-2 ms-5" %>
   <% end %>
+    <% if @appointment.finished? %>
+    <%= link_to "Rating", { controller: "patients/appointments", action: "update_rating", id: @appointment.id }, class: "mb-2 ms-5", style: "color: #7eaa57;" %>
+<% end %>
+  <%= link_to "Back to appointments", patients_appointments_path, class: "mb-2 ms-5", style: "color: #7eaa57;" %>
+</div>
 </div>

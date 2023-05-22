@@ -6,7 +6,7 @@ module Patients
     end
 
     def show
-      @doctor = current_doctor
+      @doctor = Doctor.find(params[:id])
     end
 
     def new
