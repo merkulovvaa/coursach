@@ -1,12 +1,21 @@
-<div class="container gap_container">
+<div class="gap_container mb-3">
+  <div>
+    <%= link_to "Back to home page", doctor_root_path, class: "mb-2 ", style: "color: #7eaa57;" %>
+  </div>
+  <div class="container">
   <div class="row">
   <% @appointments.each do |appointment| %>
-      <div class="col-md-4">
+      <div class="col-md-3">
     <%= render appointment %>
+        <div class="container ms-5">
     <p>
-      <%= link_to "Show this appointment", controller: "patients/appointments", action: "show", id: appointment.id, class: 'btn btn-monkey ms-5', style: "color: black"%>
+      <%= link_to "Show this appointment",{controller: "patients/appointments", action: "show", id: appointment.id}, class: "mb-2 ", style: "color: #7eaa57;" %>
     </p>
+        </div>
       </div>
   <% end %>
 </div>
 </div>
+</div>
+<%= paginate @appointments, class: "custom-pagination" %>
+

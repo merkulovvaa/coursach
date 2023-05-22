@@ -1,13 +1,14 @@
-<div class="container gap-container">
+<div class="container card">
+
   <%= form_with(model: appointment, url: patients_appointment_date_path, method: :post) do |form| %>
     <div class="mb-3">
-      <%= form.label :doctor_id, style: "display: block" %>
+      <%= form.label :doctor_id, class: "form-label", style: "display: block" %>
       <% if @selected_doctor %>
         <%= form.hidden_field :doctor_id, value: @selected_doctor.id, readonly: true %>
-        <div class="field mb-2 text2_container">
+        <div class="form-text-container mb-2">
           <%= @selected_doctor.full_name %>
         </div>
-        <div class="field mb-2">
+        <div class="form-text-container ">
           <%= @selected_doctor.spec.name_spec %>
         </div>
       <% end %>
@@ -18,7 +19,7 @@
     </div>
 
     <div class="mb-3">
-      <%= form.label :appointment_date, style: "display: block" %>
+      <%= form.label :appointment_date, class: "form-label", style: "display: block" %>
       <%= form.select :appointment_date, options_for_select(@available_dates), {}, class: 'form-control' %>
     </div>
 
@@ -29,9 +30,14 @@
     <div class="mb-3">
       <%= form.hidden_field :status, readonly: true %>
     </div>
-
+    <% if appointment.finished? %>
+    <div class="field">
+      <%= f.label :patient_analysis_names %>
+      <%= f.text_field :patient_analysis_names, value: @appointment.patient_analysis.pluck(:name).join(', '), readonly: true %>
+    </div>
+    <%end %>
     <div class="mb-3">
-      <%= form.submit 'Submit', class: 'btn btn-monkey', disabled: @available_dates.empty? %>
+      <%= form.submit 'Submit', disabled: @available_dates.empty?,class: "btn btn-monkey", style: "background-color: #7eaa57; border-radius: 8px;" %>
     </div>
   <% end %>
 </div>

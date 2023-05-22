@@ -1,0 +1,4 @@
+<%= render @doctor %>
+<% if @doctor.active? %>
+<%= link_to "Make an Appointment", new_patients_appointment_path(doctor_id: @doctor.id), class: "btn btn-all ms-5", style:"color: black;"%>
+<% end %>

@@ -27,6 +27,8 @@ class Appointment < ApplicationRecord
   belongs_to :doctor
   belongs_to :outpatient_card
   has_many :patient_analysis, dependent: :destroy
+  has_many :analyses, through: :patient_analysis
+  has_one :patient, through: :outpatient_card
 
   enum status: { active: 0, finished: 1, canceled: -1 }
 

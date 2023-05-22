@@ -118,3 +118,32 @@
 .gap-container{
     margin-top: 10vh;
 }
+
+.card {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    border-radius: 8px;
+}
+
+/* Стили для статуса "canceled" */
+.card.status-canceled {
+    background-color: rgba(128, 128, 128, 0.21);
+}
+
+/* Стили для статуса "finished" */
+.card.status-finished {
+    background-color: #fffdeb;
+}
+
+.form-text-container{
+    color: rgb(20, 21, 20);
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px; /* Уменьшите нижний отступ */
+}
+
+.custom-pagination a {
+    color: #7eaa57;
+}
+

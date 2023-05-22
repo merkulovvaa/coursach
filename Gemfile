@@ -37,6 +37,8 @@ gem 'whenever', require: false
 gem 'devise'
 gem 'pundit'
 
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

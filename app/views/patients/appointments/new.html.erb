@@ -1,9 +1,8 @@
-<h1>New Appointment</h1>
 
-<%= render "form", appointment: @appointment %>
-
-<br>
-
-<div>
-  <%= link_to "Back to appointments", patients_appointments_path %>
+<div class="container" style="justify-content: center; align-items: center; height: 100vh;">
+  <div style="margin-top: 20vh;">
+    <div class ="text-container ms-2">New Appointment</div>
+    <%= render "form", appointment: @appointment %>
+    <br>
+  </div>
 </div>
