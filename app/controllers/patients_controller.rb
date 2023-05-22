@@ -16,6 +16,7 @@ class PatientsController < ApplicationController
     @patient = Patient.new(patient_params)
 
     if @patient.save
+      # OutpatientCard.create(patient_id: @patient.id)
       redirect_to @patient
     else
       render :new
