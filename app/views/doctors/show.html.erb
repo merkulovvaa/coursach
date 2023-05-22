@@ -1,12 +1,12 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @doctor %>
+  <div class="doctor-for-doctor_info_container">
+    <%= render @doctor %>
 
-<div>
-  <%= link_to "Back to home page", doctor_root_path %>
-
-  <%#= link_to "Edit this doctor", edit_doctor_path(@doctor) %>
-  <%#= link_to "Back to doctors", doctors_path %>
-
-  <%#= button_to "Destroy this doctor", @doctor, method: :delete %>
+    <div class="mt-3">
+      <%= link_to "Back to home page", doctor_root_path, style: "color: #7eaa57;" %> |
+      <%= link_to "Settings", edit_doctor_path(@doctor), style: "color: #7eaa57;" %>
+    </div>
+  </div>
 </div>

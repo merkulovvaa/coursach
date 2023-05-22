@@ -1,0 +1,19 @@
+<div class="app-back-home-page">
+  <%= link_to "Back to home page", doctor_root_path, style: "color: #7eaa57;" %>
+</div>
+<div class="container mb-5">
+    <p style="color: green"><%= notice %></p>
+
+    <h1 class="patients-for-doctors-all-text">All patients</h1>
+
+    <div id="patients">
+      <% @patients.each do |patient| %>
+        <div class="patient-for-doctor_info_container">
+            <%= render patient %>
+            <p>
+              <%= link_to "Show this patient", doctors_patient_path(patient), style: "color: #7eaa57;" %>
+            </p>
+        </div>
+      <% end %>
+    </div>
+</div>

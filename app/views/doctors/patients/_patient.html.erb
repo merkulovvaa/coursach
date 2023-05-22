@@ -1,0 +1,41 @@
+<div id="<%= dom_id patient %>">
+
+  <div class="avatar-container">
+    <% if patient.avatar.attached? %>
+      <%= image_tag patient.avatar %>
+    <% else %>
+      <%= image_tag "monkey.jpeg" %>
+    <% end %>
+  </div>
+
+  <p>
+    <strong>Full name:</strong>
+    <%= patient.full_name %>
+  </p>
+
+  <p>
+    <strong>Sex:</strong>
+    <%= patient.gender.name_gender %>
+  </p>
+
+  <p>
+    <strong>Birth date:</strong>
+    <%= patient.birth_date %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= patient.address %>
+  </p>
+
+  <p>
+    <strong>Phone number:</strong>
+    <%= patient.phone_number %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= patient.email %>
+  </p>
+
+</div>

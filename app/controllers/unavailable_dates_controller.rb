@@ -1,10 +1,16 @@
 class UnavailableDatesController < ApplicationController
+  before_action :authenticate_doctor!
   def index
-    @unavailable_dates = UnavailableDate.all
+    @unavailable_dates = UnavailableDate.all.where(doctor_id: current_doctor.id)
   end
 
   def show
-    @unavailable_date = UnavailableDate.find(params[:id])
+    date = UnavailableDate.find(params[:id])
+    if date.doctor_id == current_doctor.id
+      @unavailable_date = UnavailableDate.find(params[:id])
+    else
+      redirect_to doctor_root_path
+    end
   end
 
   def new
@@ -21,7 +27,7 @@ class UnavailableDatesController < ApplicationController
       end_date = Date.parse(params[:unavailable_date][:end_date])
       wanted_amount = (end_date - start_date).to_i
       if available_amount_of_days < wanted_amount
-        flash[:error] = "Вы не можете взять больше #{available_amount_of_days} дней отпуска"
+        flash[:error] = "You can't take more than #{available_amount_of_days} days of vacation"
         redirect_to new_unavailable_date_path
         return
       end
@@ -39,7 +45,7 @@ class UnavailableDatesController < ApplicationController
   end
 
   def edit
-    @unavailable_date = UnavailableDate.find(params[:id])
+    redirect_to doctor_root_path
   end
 
   def update

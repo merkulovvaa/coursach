@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  end_date   :date
-#  leave_type :integer          default(0)
+#  leave_type :integer          default("sick_leave")
 #  start_date :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -23,6 +23,7 @@ class UnavailableDate < ApplicationRecord
   validate :no_overlapping_unavailable_dates
   validates :start_date, presence: true
   validates :end_date, presence: true
+  validate :validate_date_range
 
   belongs_to :doctor
   enum leave_type: { sick_leave: 0, vacation: 1 }
@@ -33,7 +34,7 @@ class UnavailableDate < ApplicationRecord
     return if end_date.blank? || start_date.blank?
 
     if end_date < start_date
-      errors.add(:end_date, "должна быть позже даты начала")
+      errors.add(:end_date, "can't be earlier than start date")
     end
   end
 
@@ -45,7 +46,22 @@ class UnavailableDate < ApplicationRecord
       start_date, end_date, start_date, end_date, start_date, end_date)
 
     if overlapping_dates.exists?
-      errors.add(:base, "Период недоступных дат пересекается с другой записью")
+      errors.add(:base, "The period of unavailable dates overlaps with another record")
+    end
+  end
+
+  def validate_date_range
+    if start_date.present? && start_date < Date.new(2010, 1, 1)
+      errors.add(:start_date, "must be after January 1, 2010")
+    end
+    if end_date.present? && end_date < Date.new(2010, 1, 1)
+      errors.add(:end_date, "must be after January 1, 2010")
+    end
+    if start_date.present? && start_date > Date.current + 10.years
+      errors.add(:start_date, "must be in less than 10 years")
+    end
+    if end_date.present? && end_date > Date.current + 10.years
+      errors.add(:end_date, "must be in less than 10 years")
     end
   end
 end

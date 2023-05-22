@@ -16,14 +16,17 @@
 .navbar {
     background-color: #7eaa57; /* Замените #009688 на свой код цвета $teal-200 */
 }
-     /* Стили для кнопок */
- .btn-monkey {
+
+.btn-monkey {
      background-color: #7eaa57;
      color: #fff;
      border-color: #7eaa57;
- }
+}
 
-/* Стили для надписи "Login" */
+.custom-link {
+    color: #7eaa57;
+}
+
 .login-title {
     display: flex;
     justify-content: center;
@@ -35,7 +38,6 @@
     line-height: 1.2;
 }
 
-/* Стили для названия "Monkey" */
 .navbar-brand {
     color: #fff;
     font-weight: bold;
@@ -63,6 +65,392 @@
     font-weight: bold;
 }
 
+.text-container1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 60px;
+    margin-top: 80px;
+    color: #141514;
+    font-size: 35px;
+    font-weight: bold;
+}
+
 .content-container p {
     margin-bottom: 1px;
+}
+
+.indented-paragraph {    padding-left: 20px; /* Adjust the value as needed */
+}
+
+.btn-all {    background-color: white;
+    color: #7eaa57;    border-color: white;
+
+}.btn-all:hover {
+     background-color: #7eaa57;    color: white;
+     border-color: #7eaa57;}
+.doctor_root_container {
+    margin: 100px 30px 30px;
+    display: flex;
+    flex-direction: row;
+}
+.today_appointments {
+    padding: 10px;
+    margin-left: 30px;
+    width: 500px;
+    height: 400px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+
+.next_day_appointments {
+    padding: 10px;
+    margin-left: 30px;
+    width: 500px;
+    height: 450px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+.text-for-no-app{
+    margin-left: 30px;
+    opacity: 80%;
+    font-size: 18px;
+}
+.doctor_links_container{
+    margin-left: 100px;
+    width: 500px;
+    height: 400px;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+    padding-left: 30px;
+}
+.doctor_link {
+    color: #7eaa57;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.doctor_link:hover {
+    text-decoration: underline;
+}
+.doctor_links_container li {
+    margin-top: 30px;
+}
+.doctor_links_container a {
+    color: #337ab7;
+    text-decoration: none;
+    font-weight: bold;
+}
+.doctor_links_container a:hover {
+    text-decoration: underline;
+}
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.appointments-table th,
+.appointments-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+.text-for-no-app {
+    margin-top: 10px;
+}
+.doctor_links_container .doctor_link {
+    font-size: 18px;
+}
+
+.app-text-container {
+    white-space: nowrap;
+    color: #141514;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.show_appointment_container {
+    max-width: 800px;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+.appointment_info_container {
+    background-color: #f8f8f8;
+    padding: 30px;
+    margin-top: 100px;
+    margin-left: 300px;
+    width: 500px;
+    height: 260px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+
+.appointment_edit_container {
+    background-color: #f8f8f8;
+    padding: 30px;
+    margin-top: 50px;
+    margin-left: 300px;
+    width: 500px;
+    height: 490px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+
+.app-edit-form-group {
+    margin-bottom: 20px;
+}
+
+.app-edit-form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.app-edit-analysis-container {
+    margin-left: 10px;
+    padding: 7px;
+    width: 420px;
+    height: 100px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.app-edit-form-group {
+    margin-bottom: 10px;
+}
+
+.app-back-home-page {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.app-all-text {
+    margin-top: 20px;
+    margin-left: 400px;
+    opacity: 80%;
+    font-size: 35px;
+}
+
+.app-edit-analysis-checkbox {
+    display: block;
+    margin-bottom: 8px;
+}
+.card-all-text {
+    margin-top: 20px;
+    margin-left: 380px;
+    opacity: 80%;
+    font-size: 35px;
+}
+.outpatient_card_info_container {
+    background-color: #f8f8f8;
+    padding: 30px;
+    margin-top: 100px;
+    margin-left: 300px;
+    width: 500px;
+    height: 400px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+
+.app-outpatient_card_info-container {
+    margin-left: 10px;
+    padding: 7px;
+    width: 420px;
+    height: 200px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.app-outpatient_card-analysis_info-container {
+    margin-left: 10px;
+    padding: 7px;
+    width: 250px;
+    height: 60px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar-container {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+}
+
+.default-avatar {
+    width: 200px;
+    height: 200px;
+    background-color: gray;
+}
+
+.doctor-for-doctor_info_container {
+    background-color: #f8f8f8;
+    padding: 30px;
+    margin-top: 50px;
+    margin-left: 300px;
+    width: 500px;
+    height: 520px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+.editing-doctor-profile-text {
+    margin-top: 15px;
+    margin-left: 475px;
+    opacity: 80%;
+    font-size: 30px;
+}
+
+.doctor-form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.avatar-container1 {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-right: 70px;
+}
+
+.avatar-input {
+    margin-top: 5px;
+}
+
+.form-row label {
+    font-weight: bold;
+}
+
+.form-row input[type="text"],
+.form-row select,
+.form-row input[type="date"] {
+    padding: 5px;
+    border: 1px solid lightgray;
+    border-radius: 4px;
+}
+
+.form-row input[type="file"] {
+    display: none;
+}
+
+.form-row input[type="submit"] {
+    background-color: #7eaa57;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.doctor-form-container{
+    display: flex;
+}
+
+.edit-doctor-for-doctor_info_container {
+    background-color: #f8f8f8;
+    padding: 32px;
+    margin-top: 15px;
+    margin-left: 165px;
+    width: 770px;
+    height: 580px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+
+.doctors-for-doctors-all-text{
+    margin-top: 5px;
+    margin-left: 450px;
+    opacity: 80%;
+    font-size: 35px;
+}
+.patient-for-doctor_info_container {
+    background-color: #f8f8f8;
+    padding: 35px;
+    margin-top: 30px;
+    margin-left: 300px;
+    width: 500px;
+    height: 550px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+.patients-for-doctors-all-text{
+    margin-left: 450px;
+    opacity: 80%;
+    font-size: 35px;
+}
+
+.unavailable-dates-for-doctor_info_container {
+    background-color: #f8f8f8;
+    padding: 35px;
+    margin-top: 30px;
+    margin-left: 300px;
+    width: 500px;
+    height: 550px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+.unavailable-dates-for-doctors-all-text{
+    margin-left: 390px;
+    opacity: 80%;
+    font-size: 35px;
+}
+
+.unavailable-dates-form_container {
+    background-color: #f8f8f8;
+    padding: 40px;
+    margin-top: 50px;
+    margin-left: 300px;
+    width: 500px;
+    height: 465px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.unvdatestext {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    opacity: 80%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.unavailable-date-for-doctor_info_container {
+    background-color: #f8f8f8;
+    padding: 20px;
+    padding-left: 40px;
+    margin-top: 50px;
+    margin-left: 350px;
+    width: 400px;
+    height: 240px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0.1, 0, 0, 0.2);
 }

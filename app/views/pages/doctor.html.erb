@@ -1,86 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-      nav {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          background-color: #f8f8f8;
-          padding: 10px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-      ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-      }
-      li {
-          margin-right: 10px;
-      }
-      a {
-          text-decoration: none;
-          color: #333;
-      }
-      .container {
-          display: flex;
-          flex-direction: column;
-          width: 200px;
-          height: 200px;
-          background-color: #eee;
-          padding: 10px;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-      .container ul {
-          margin-top: 10px;
-      }
-  </style>
-</head>
 <body>
-<header>
-  <nav>
-    <ul>
-      <li><%= link_to current_doctor.full_name, doctor_path(current_doctor) %></li>
-      <li><%= link_to 'Settings', edit_doctor_path(current_doctor) %></li>
-      <li><%= button_to 'Logout', destroy_doctor_session_path, method: :delete %></li>
-    </ul>
-  </nav>
-</header>
-<% unavailable_dates = current_doctor.unavailable_dates.where('start_date <= ? AND end_date >= ?', Date.today, Date.today) %>
-<% if unavailable_dates.any? %>
-  <% if unavailable_dates.vacation.any? %>
-    <h2>Вы в отпуске</h2>
-  <% elsif unavailable_dates.sick_leave.any? %>
-    <h2>Вы на больничном</h2>
-  <% end %>
-<% else %>
-<main>
-  <h2>Appointments for today:</h2>
-  <% today_appointments = current_doctor.appointments.where(appointment_date: Date.today) %>
-  <% if today_appointments.any? %>
-    <h5>Patient's name | Time | Status</h5>
-    <ul>
-      <% today_appointments.each do |appointment| %>
-        <li>
-          <%= appointment.outpatient_card.patient.full_name %> <%= appointment.appointment_date %>
-          <% if appointment.active? %>
-            <%= link_to 'Finish', edit_doctors_appointment_path(appointment) %>
-          <% elsif appointment.finished? %> Finished
-          <% else %> Canceled
-          <% end %>
-        </li>
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid justify-content-center">
+    <a class="navbar-brand text-center">
+      <img src="/pngwing.com.png" alt="Logo" width="30" height="30">
+      MonkeyClinic
+    </a>
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title login-title" id="offcanvasNavbarLabel"><%= link_to current_doctor.full_name, doctor_path(current_doctor), style: "color: #7eaa57;"%> </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="d-flex flex-column indented-paragraph">
+        <%= button_to "Settings", edit_doctor_path(current_doctor), method: :get, class: "btn btn-all mb-2" %>
+        <%= button_to "Logout", destroy_doctor_session_path, method: :delete, class: "btn btn-monkey" %>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="doctor_root_container">
+  <div class="today_appointments">
+    <% unavailable_dates = current_doctor.unavailable_dates.where('start_date <= ? AND end_date >= ?', Date.today, Date.today) %>
+    <% if unavailable_dates.any? %>
+      <% if unavailable_dates.vacation.any? %>
+        <div class="text-for-no-app">You are on vacation</div>
+      <% elsif unavailable_dates.sick_leave.any? %>
+        <div class="text-for-no-app">You are on a sick leave</div>
       <% end %>
-    </ul>
-  <% else %>
-    <p>На сегодня нет приемов.</p>
-  <% end %>
-<% end %>
-  <ul class="container ul">
-    <li> <%= link_to 'Appointments For Next Days', doctor_appointments_path %></li>
-    <li> <%= link_to 'Take a vacation', new_unavailable_date_path %></li>
-    <li> <%= link_to 'Watch all vacations', unavailable_dates_path %></li>
-  </ul>
-</main>
+    <% else %>
+      <div class="mt-3 app-text-container">Appointments for today</div>
+      <% today_appointments = current_doctor.appointments.where(appointment_date: Date.today) %>
+      <% if today_appointments.any? %>
+        <table class="appointments-table">
+          <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Time</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% today_appointments.sort_by{ |appointment| [appointment.app_time.hour, appointment.app_time.min] }.each do |appointment| %>
+            <tr>
+              <td><%= link_to appointment.outpatient_card.patient.full_name, doctors_patient_path(appointment.outpatient_card.patient), style: "color: #7eaa57;" %></td>
+              <td><%= appointment.app_time.in_time_zone("Kyiv").strftime("%H:%M") %></td>
+              <td>
+                <% if appointment.active? %>
+                  <%= link_to 'Finish', edit_doctors_appointment_path(appointment), style: "color: #7eaa57;" %>
+                <% elsif appointment.finished? %>
+                  Finished
+                <% else %>
+                  Canceled
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="text-for-no-app">No appointments for today.</div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="doctor_links_container">
+    <li> <%= link_to 'Appointments for next days', doctor_appointments_path, class: 'doctor_link', style: "color: #7eaa57;" %> </li>
+    <li> <%= link_to 'Watch all outpatient cards', outpatient_cards_path, class: 'doctor_link', style: "color: #7eaa57;" %></li>
+    <li> <%= link_to 'Take a vacation', new_unavailable_date_path, class: 'doctor_link', style: "color: #7eaa57;" %></li>
+    <li> <%= link_to 'Watch all vacations', unavailable_dates_path, class: 'doctor_link', style: "color: #7eaa57;" %></li>
+  </div>
+</div>
 </body>
 </html>

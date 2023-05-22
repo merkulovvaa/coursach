@@ -33,4 +33,17 @@ class Patient < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :gender, optional: true
   has_one :outpatient_card, dependent: :destroy
+  has_one_attached :avatar
+  validate :validate_date_range
+
+  private
+
+  def validate_date_range
+    if birth_date.present? && birth_date < Date.new(Date.current.year, 1, 1) - 120.years
+      errors.add(:birth_date, "must be after #{Date.new(Date.current.year, 1, 1) - 120.years}")
+    end
+    if birth_date.present? && birth_date > Date.current
+      errors.add(:birth_date, "can't be after today")
+    end
+  end
   end

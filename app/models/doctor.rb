@@ -45,6 +45,8 @@ class Doctor < ApplicationRecord
   belongs_to :category
   has_many :unavailable_dates
   has_many :appointments
+  has_one_attached :avatar
+  validate :validate_date_range
 
   enum status: { active: 0, inactive: 1 }
 
@@ -57,6 +59,15 @@ class Doctor < ApplicationRecord
   end
 
   scope :by_spec, ->(name_spec) { joins(:spec).where(spec: { name_spec: name_spec })}
+
+  def validate_date_range
+    if start_working_date.present? && start_working_date < Date.new(2010, 1, 1)
+      errors.add(:start_working_date, "must be after January 1, 2010")
+    end
+    if start_working_date.present? && start_working_date > Date.current
+      errors.add(:start_working_date, "can't be after today")
+    end
+  end
 
   delegate :name_gender, to: :gender, prefix: true, allow_nil: true
   delegate :name_spec, to: :spec, prefix: true, allow_nil: true

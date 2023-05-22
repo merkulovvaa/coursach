@@ -1,29 +1,36 @@
-<h1>Finishing appointment</h1>
+<div class="container">
+  <div class="appointment_edit_container">
+    <h2 class="text-container mt-2", style="font-size: 20px">Finishing appointment</h2>
 
-<%= form_for(@appointment, url: doctors_appointment_path(@appointment)) do |f| %>
-  <div>
-    <%= f.label :report %>
-    <%= f.text_area :report %>
-  </div>
+    <%= form_for(@appointment, url: doctors_appointment_path(@appointment)) do |f| %>
+      <div class="app-edit-form-group mt-4">
+        <%= f.label :report %>
+        <%= f.text_area :report %>
+      </div>
 
-  <h3> Additionally: analyses </h3>
+      <h3> Additionally: analyses </h3>
 
-  <div>
-    <% Analysis.all.each do |analysis| %>
-      <%= check_box_tag "appointment[analysis_ids][]", analysis.id %>
-      <%= analysis.name_analysis %>
+      <div class="app-edit-analysis-container mt-2">
+        <div class="app-edit-form-group mt-2">
+          <% Analysis.all.each do |analysis| %>
+            <label class="app-edit-analysis-checkbox">
+              <%= check_box_tag "appointment[analysis_ids][]", analysis.id %>
+              <%= analysis.name_analysis %>
+            </label>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="actions mt-4">
+        <%= f.submit "Finish Appointment", class: "btn btn-monkey rounded-button", style: "background-color: #7eaa57; border-radius: 8px;" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Cancel Appointment", class: "btn btn-monkey rounded-button", style: "background-color: #7eaa57; border-radius: 8px;" %>
+      </div>
     <% end %>
+    <div class="mt-2">
+      <%= link_to "Back to home page", doctor_root_path, style: "color: #7eaa57;" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Finish Appointment" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Cancel Appointment" %>
-  </div>
-<% end %>
-
-<div>
-  <%= link_to "Back to home page", doctor_root_path %>
 </div>

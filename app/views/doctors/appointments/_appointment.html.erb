@@ -1,13 +1,16 @@
 <div id="<%= dom_id appointment %>">
-  <p>
-    <strong>Doctor:</strong>
-    <%= appointment.doctor_id %>
-  </p>
+  <h2 class="text-container">Appointment</h2>
+  <div class="appointment-container">
+    <p>
+      <strong>Doctor:</strong>
+      <%= Doctor.find(appointment.doctor_id).full_name %>
+    </p>
 
-  <p>
-    <strong>Patient card:</strong>
-    <%= appointment.outpatient_card_id %>
-  </p>
+    <p>
+      <strong>Patient:</strong>
+      <%= link_to Patient.find(OutpatientCard.find(appointment.outpatient_card_id).patient_id).full_name, doctors_patient_path(OutpatientCard.find(appointment.outpatient_card_id).patient_id), style: "color: #7eaa57;" %>
+    </p>
+  </div>
 
   <p>
     <strong>Appointment date:</strong>

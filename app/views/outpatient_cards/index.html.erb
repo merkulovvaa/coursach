@@ -1,14 +1,19 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Outpatient cards</h1>
-
-<div id="outpatient_cards">
-  <% @outpatient_cards.each do |outpatient_card| %>
-    <%= render outpatient_card %>
-    <p>
-      <%= link_to "Show this outpatient card", outpatient_card %>
-    </p>
-  <% end %>
+<div class="app-back-home-page">
+  <%= link_to "Back to home page", doctor_root_path, style: "color: #7eaa57;" %>
 </div>
+<div class="container mb-5">
+    <p style="color: green"><%= notice %></p>
 
-<%= link_to "New outpatient card", new_outpatient_card_path %>
+    <h1 class="card-all-text">All outpatient cards</h1>
+
+    <div id="outpatient_cards">
+      <% @outpatient_cards.each do |outpatient_card| %>
+            <div class="outpatient_card_info_container">
+            <%= render outpatient_card %>
+            <p>
+              <%= link_to "Show this outpatient card", outpatient_card, style: "color: #7eaa57;" %>
+            </p>
+        </div>
+      <% end %>
+    </div>
+</div>
