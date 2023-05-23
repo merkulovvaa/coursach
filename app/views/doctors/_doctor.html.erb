@@ -23,10 +23,10 @@
     <%= Spec.find_by(id: doctor.spec_id).name_spec %>
   </p>
 
-<!--  <p>-->
-<!--    <strong>Department:</strong>-->
-    <%#= Department.find_by(id: doctor.department_id).name_depart %>
-<!--  </p>-->
+  <p>
+    <strong>Department:</strong>
+    <%= Department.find_by(id: doctor.department_id).name_depart %>
+  </p>
 
   <p>
     <strong> Working experience:</strong>
