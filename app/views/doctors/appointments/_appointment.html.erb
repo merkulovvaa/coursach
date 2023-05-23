@@ -19,7 +19,16 @@
 
   <p>
     <strong>Report:</strong>
-    <%= appointment.report %>
+    <%= appointment.report.presence || "-" %>
+  </p>
+
+  <p>
+    <strong>Analyses:</strong>
+    <% if appointment.analyses.any? %>
+      <%= appointment.analyses.map(&:name_analysis).join(", ") %>
+    <% else %>
+     -
+    <% end %>
   </p>
 
 </div>
