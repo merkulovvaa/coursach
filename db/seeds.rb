@@ -113,3 +113,4 @@ Analysis.create!(name_analysis: 'Tumor Marker Tests')
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+Appointment.cancel_all
