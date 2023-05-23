@@ -51,7 +51,12 @@ class Doctor < ApplicationRecord
   enum status: { active: 0, inactive: 1 }
 
   def update_rating
-    update_column(:rating, appointments.finished.average(:rating))
+    total_rating = appointments.finished.sum(:rating) + rating
+    appointment_count = appointments.finished.count + 1
+
+    average_rating = total_rating / appointment_count
+
+    update_column(:rating, average_rating.round(2))
   end
 
   def experience_years

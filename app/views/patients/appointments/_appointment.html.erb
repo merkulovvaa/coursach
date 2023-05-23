@@ -29,6 +29,16 @@
           <strong>Report:</strong>
           <%= appointment.report %>
         </p>
+        <% if appointment.finished? %>
+        <p>
+          <strong>Analyses:</strong>
+          <% if appointment.analyses.any? %>
+            <%= appointment.analyses.map(&:name_analysis).join(", ") %>
+          <% else %>
+            -
+          <% end %>
+        </p>
+        <% end %>
 
         <p>
         <strong>Status:</strong>

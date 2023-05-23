@@ -40,7 +40,8 @@ Department.create!(name_depart: 'Psychosomatic department')
     spec: Spec.all.sample,
     category: Category.all.sample,
     department: Department.all.sample,
-    start_working_date: Faker::Date.between(from: 30.years.ago, to: Date.today)
+    start_working_date: Faker::Date.between(from: 30.years.ago, to: Date.today),
+    rating: rand(0.0...5.0).round(2)
   )
 end
 
@@ -58,12 +59,28 @@ end
   OutpatientCard.create!(patient: patient)
 end
 
+start_time = Time.parse('08:00')
+end_time = Time.parse('13:00')
+
 50.times do
+  random_date = Faker::Date.between(from: 10.month.ago, to: 1.month.from_now)
+  random_time = Time.at(rand(start_time.to_i..end_time.to_i)).to_datetime
+  rounded_time = random_time.change(min: (random_time.min / 30).round * 30)
+  status = rand(0...2)
+  if status == 1
+    report = Faker::Lorem.paragraph
+  else
+    report = nil
+  end
+
   Appointment.create!(
+
       doctor: Doctor.all.sample,
       outpatient_card: OutpatientCard.all.sample,
-      appointment_date: Faker::Date.between(from: 10.month.ago, to: 1.month.from_now),
-      report: Faker::Lorem.paragraph
+      app_time: random_date.to_datetime + rounded_time.seconds_since_midnight.seconds,
+      report: report,
+      status: status
+
   )
 end
 
@@ -90,7 +107,7 @@ Analysis.create!(name_analysis: 'Tumor Marker Tests')
     PatientAnalysis.create!(
         analysis: Analysis.all.sample,
         appointment: appointment_cur,
-        analysis_date: Faker::Date.between(from: appointment_cur.appointment_date, to: Date.today)
+        analysis_date: Faker::Date.between(from: appointment_cur.app_time, to: Date.today)
     )
   end
 end
