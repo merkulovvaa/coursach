@@ -30,7 +30,7 @@ class Appointment < ApplicationRecord
   has_many :analyses, through: :patient_analysis
   has_one :patient, through: :outpatient_card
 
-  enum status: { active: 0, finished: 1, canceled: -1 }
+  enum status: { active: 0, finished: 1, canceled: 2 }
 
   delegate :full_name, to: :doctor, prefix: true, allow_nil: true
   delegate :spec_id, to: :doctor, prefix: true, allow_nil: true
@@ -43,6 +43,6 @@ class Appointment < ApplicationRecord
 
   def self.cancel_all
     appointments = Appointment.where(status: 0).where('app_time <= ?', Time.zone.today.end_of_day)
-    appointments.update_all(status: -1)
+    appointments.update_all(status: 2)
   end
 end

@@ -1,17 +1,18 @@
 <div class="container" style="justify-content: center; align-items: center; height: 100vh;">
   <div style="margin-top: 20vh;">
-    <div class="card">
+    <div class="container card d-flex justify-content-center align-items-center">
       <%= form_with(model: @appointment, url: "/patients/appointments/#{@appointment.id}") do |form| %>
 
         <div>
           <%= form.hidden_field :outpatient_card_id %>
         </div>
-
+        <div class="text-container mb-3">
         <%= form.label :appointment_date, style: "display: block" %>
-        <%= form.date_field :appointment_date, readonly: true %>
+        <%= form.date_field :app_time, readonly: true %>
 
-        <div>
-          <%= form.hidden_field :report, readonly: true %>
+        <div class ="mb-3">
+          <%= form.label :report, style: "display: block" %>
+          <%= form.text_field :report, readonly: true %>
         </div>
 
         <div>
@@ -19,12 +20,12 @@
         </div>
 
         <% if @appointment.finished? %>
-          <div class="field">
+          <div class="field mb-3">
             <%= form.label :rating %>
             <%= form.select :rating, (1..5).map { |n| [n, n] }, prompt: "Select rating", include_blank: true %>
           </div>
         <% end %>
-
+        </div>
         <div>
           <%= form.submit 'Rate', class: "btn btn-monkey", style: "background-color: #7eaa57; border-radius: 8px;" %>
         </div>

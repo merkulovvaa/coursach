@@ -1,34 +1,44 @@
 <body>
-<div class="container gap-container">
-  <div class="container card <%= 'status-canceled' if doctor.status == 'inactive' %>">
+  <div class="doctor-form-container">
     <div id="<%= dom_id doctor %>">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><p>
+        <div class="avatar-container">
+          <% if doctor.avatar.attached? %>
+            <%= image_tag doctor.avatar %>
+          <% else %>
+            <%= image_tag "monkey.jpeg" %>
+          <% end %>
+        </div>
+
+        <p>
           <strong>Full name:</strong>
           <%= doctor.full_name %>
-        </p></li>
-        <li class="list-group-item"><p>
-          <strong>Sex:</strong>
-          <%= doctor.gender.name_gender %>
-        </p></li>
-        <li class="list-group-item"> <p>
-          <strong>Specialization:</strong>
-          <%= doctor.spec.name_spec %>
-        </p></li>
-        <li class="list-group-item"><p>
-          <strong>Category:</strong>
-          <%= doctor.category.category_name %>
-        </p></li>
-        <li class="list-group-item"> <p>
-          <strong>Work experience:</strong>
-          <%= doctor.experience_years %>
-        </p></li>
-        <li class="list-group-item"> <p>
-          <strong>Rating:</strong>
-          <%= doctor.rating %>
-        </p></li>
-      </ul>
+        </p>
+
+          <p>
+            <strong>Specialization:</strong>
+            <%= doctor.spec.name_spec %>
+          </p>
+
+          <p>
+            <strong>Category:</strong>
+            <%= doctor.category.category_name %>
+          </p>
+
+          <p>
+            <strong>Sex:</strong>
+            <%= doctor.gender.name_gender %>
+          </p>
+
+          <p>
+            <strong>Work experience:</strong>
+            <%= doctor.experience_years %>
+          </p>
+
+          <p>
+            <strong>Rating:</strong>
+            <%= doctor.rating %>
+          </p>
+
+      </div>
     </div>
-  </div>
-</div>
 </body>

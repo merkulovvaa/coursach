@@ -14,7 +14,7 @@
       <% end %>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 text-container">
       <%= form.hidden_field :outpatient_card_id %>
     </div>
 
@@ -36,8 +36,8 @@
       <%= f.text_field :patient_analysis_names, value: @appointment.patient_analysis.pluck(:name).join(', '), readonly: true %>
     </div>
     <%end %>
-    <div class="mb-3">
-      <%= form.submit 'Submit', disabled: @available_dates.empty?,class: "btn btn-monkey", style: "background-color: #7eaa57; border-radius: 8px;" %>
+    <div class="form mb-3">
+      <%= form.submit 'Submit', disabled: @available_dates.empty?, class: "btn btn-monkey", style: "background-color: #7eaa57; border-radius: 8px; margin: 0 auto;" %>
     </div>
   <% end %>
 </div>

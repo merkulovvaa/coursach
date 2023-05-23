@@ -1,3 +1,13 @@
+<div class="doctor-form-container">
+  <div class="avatar-container1">
+    <% if doctor.avatar.attached? %>
+      <%= image_tag doctor.avatar %>
+    <% else %>
+      <%= image_tag "monkey.jpeg" %>
+    <% end %>
+  </div>
+
+  <div class="doctor-form-itself">
 <%= form_with(model: doctor) do |form| %>
   <% if doctor.errors.any? %>
     <div style="color: red">
@@ -11,38 +21,38 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :full_name, style: "display: block" %>
-    <%= form.text_field :full_name %>
-  </div>
+      <div class="form-row">
+        <%= form.label :full_name, style: "display: block" %>
+        <%= form.text_field :full_name %>
+      </div>
 
-  <div>
-    <%= form.label :gender_id, style: "display: block" %>
-    <%= form.text_field :gender_id %>
+      <div class="form-row">
+        <%= form.label :gender_id, style: "display: block" %>
+        <%= form.text_field :gender_id %>
+      </div>
 
-  </div>
+      <div class="form-row">
+        <%= form.label :spec_id, style: "display: block" %>
+        <%= form.text_field :spec_id %>
+      </div>
 
-  <div>
-    <%= form.label :spec_id, style: "display: block" %>
-    <%= form.text_field :spec_id %>
-  </div>
+      <div class="form-row">
+        <%= form.label :department_id, style: "display: block" %>
+        <%= form.text_field :department_id %>
+      </div>
 
-  <div>
-    <%= form.label :department_id, style: "display: block" %>
-    <%= form.text_field :department_id %>
-  </div>
+      <div class="form-row">
+        <%= form.label :start_working_date, style: "display: block" %>
+        <%= form.date_field :start_working_date %>
+      </div>
 
-  <div>
-    <%= form.label :start_working_date, style: "display: block" %>
-    <%= form.date_field :start_working_date %>
-  </div>
-
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
+      <div class="form-row">
+        <%= form.label :email, style: "display: block" %>
+        <%= form.text_field :email %>
+      </div>
+      <div>
     <%= form.submit %>
-  </div>
+      </div>
 <% end %>
+  </div>
+</div>

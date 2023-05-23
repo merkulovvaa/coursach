@@ -1,33 +1,42 @@
 <body>
+    <div class= "avatar-container">
+<% if patient.avatar.attached? %>
+  <%= image_tag patient.avatar %>
+<% else %>
+  <%= image_tag "/avatar.png" %>
+<% end %>
+</div>
 
-<div class="container card" style="width: 30rem;>
 <div id="<%= dom_id patient %>">
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><p>
+ <p>
       <strong>Full name:</strong>
       <%= patient.full_name %>
-    </p></li>
-    <li class="list-group-item"><p>
+    </p>
+
+  <p>
       <strong>Sex:</strong>
       <%= patient.gender.name_gender %>
-    </p></li>
-    <li class="list-group-item"><p>
+    </p>
+
+    <p>
       <strong>Birth date:</strong>
       <%= patient.birth_date %>
-    </p></li>
-    <li class="list-group-item"><p>
+    </p>
+
+    <p>
       <strong>Address:</strong>
       <%= patient.address %>
-    </p></li>
-    <li class="list-group-item"><p>
+    </p>
+
+    <p>
       <strong>Phone number:</strong>
       <%= patient.phone_number %>
-    </p></li>
-    <li class="list-group-item"><p>
+    </p>
+
+    <p>
       <strong>Email:</strong>
       <%= patient.email %>
-    </p></li>
-  </ul>
+    </p>
 </div>
 </div>
 </body>

@@ -61,8 +61,8 @@ class Doctor < ApplicationRecord
   scope :by_spec, ->(name_spec) { joins(:spec).where(spec: { name_spec: name_spec })}
 
   def validate_date_range
-    if start_working_date.present? && start_working_date < Date.new(2010, 1, 1)
-      errors.add(:start_working_date, "must be after January 1, 2010")
+    if start_working_date.present? && start_working_date < Date.new(1970, 1, 1)
+      errors.add(:start_working_date, "must be after January 1, 1970")
     end
     if start_working_date.present? && start_working_date > Date.current
       errors.add(:start_working_date, "can't be after today")

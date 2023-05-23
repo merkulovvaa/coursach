@@ -1,6 +1,6 @@
 class Patients::AppointmentsController < ApplicationController
     def index
-      @appointments = current_patient.outpatient_card.appointments.order(:appointment_date).all.page(params[:page]).per(8)
+      @appointments = current_patient.outpatient_card.appointments.order(appointment_date: :DESC).page(params[:page]).per(6)
     end
 
     def show

@@ -3,7 +3,7 @@
 <%= render @appointment %>
 
 <div>
-<div class="container ms-3 mt-3">
+<div class="container ms-3 mt-3 d-flex justify-content-center align-items-center">
   <% unless @appointment.finished? || @appointment.canceled? %>
     <%= button_to "Cancel this appointment", "/patients/appointments/#{@appointment.id}", method: :delete, class: "btn btn-monkey mb-2 ms-5" %>
   <% end %>

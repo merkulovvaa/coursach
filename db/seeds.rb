@@ -27,12 +27,8 @@ Spec.create!(name_spec: "Gastroenterologist")
 Spec.create!(name_spec: "Endocrinologist")
 
 Department.create!(name_depart: 'Surgical department')
-Department.create!(name_depart: 'Gynecological department')
 Department.create!(name_depart: 'Therapeutic department')
-Department.create!(name_depart: 'Cardiology department')
 Department.create!(name_depart: 'Psychosomatic department')
-Department.create!(name_depart: 'Endocrinological department')
-Department.create!(name_depart: 'Gastroenterological department')
 
 30.times do |index|
   Doctor.create!(
@@ -64,10 +60,10 @@ end
 
 50.times do
   Appointment.create!(
-    doctor: Doctor.all.sample,
-    outpatient_card: OutpatientCard.all.sample,
-    appointment_date: Faker::Date.between(from: 10.month.ago, to: 1.month.from_now),
-    report: Faker::Lorem.paragraph
+      doctor: Doctor.all.sample,
+      outpatient_card: OutpatientCard.all.sample,
+      appointment_date: Faker::Date.between(from: 10.month.ago, to: 1.month.from_now),
+      report: Faker::Lorem.paragraph
   )
 end
 
@@ -89,13 +85,14 @@ Analysis.create!(name_analysis: 'Vitamin D Levels')
 Analysis.create!(name_analysis: 'Tumor Marker Tests')
 
 100.times do
-  appointment_cur = Appointment.all.sample
-  PatientAnalysis.create!(
-    analysis: Analysis.all.sample,
-    appointment: appointment_cur,
-    analysis_date: Faker::Date.between(from: appointment_cur.appointment_date, to: Date.today)
-  )
+  appointment_cur = Appointment.where(status: "finished").sample
+  if appointment_cur
+    PatientAnalysis.create!(
+        analysis: Analysis.all.sample,
+        appointment: appointment_cur,
+        analysis_date: Faker::Date.between(from: appointment_cur.appointment_date, to: Date.today)
+    )
   end
-
+end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

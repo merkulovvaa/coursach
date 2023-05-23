@@ -14,19 +14,19 @@
   </p>
 
   <p>
-    <strong>Gender:</strong>
+    <strong>Sex:</strong>
     <%= Gender.find_by(id: doctor.gender_id).name_gender %>
   </p>
 
   <p>
-    <strong>Spec:</strong>
+    <strong>Specialization:</strong>
     <%= Spec.find_by(id: doctor.spec_id).name_spec %>
   </p>
 
-  <p>
-    <strong>Department:</strong>
-    <%= Department.find_by(id: doctor.department_id).name_depart %>
-  </p>
+<!--  <p>-->
+<!--    <strong>Department:</strong>-->
+    <%#= Department.find_by(id: doctor.department_id).name_depart %>
+<!--  </p>-->
 
   <p>
     <strong> Working experience:</strong>

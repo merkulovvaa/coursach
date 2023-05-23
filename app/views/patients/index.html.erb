@@ -6,6 +6,7 @@
 <div class="row">
   <% @patients.each do |patient| %>
     <div class="col-md-3">
+
       <%= render patient %>
       <p>
         <%= link_to "Show this patient", patient %>

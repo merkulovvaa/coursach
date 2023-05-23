@@ -1,4 +1,10 @@
-<div class="container gap-container">
+ <div class="avatar-container1">
+    <% if patient.avatar.attached? %>
+      <%= image_tag patient.avatar %>
+    <% else %>
+      <%= image_tag "/avatar.png" %>
+    <% end %>
+  </div>
   <%= form_with(model: patient, class: "my-form") do |form| %>
     <% if patient.errors.any? %>
       <div class="alert alert-danger">
@@ -11,6 +17,11 @@
         </ul>
       </div>
     <% end %>
+
+   <div class = "mb-2">
+     <%= form.label :avatar, style: "display: block" %>
+     <%= form.file_field :avatar %>
+   </div>
 
     <div class="mb-2">
       <%= form.label :full_name, class: "form-label" %>
@@ -42,10 +53,6 @@
       <%= form.text_field :email, class: "form-control" %>
     </div>
 
-    <div>
-      <%= form.label :avatar, style: "display: block" %>
-      <%= form.file_field :avatar %>
-    </div>
 
     <div class="mb-2">
       <%= form.submit "Save", class: "btn btn-monkey", style: "background-color: #7eaa57; border-radius: 8px;"%>
