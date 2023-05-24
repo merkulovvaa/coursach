@@ -19,4 +19,6 @@ RUN useradd ruby
 
 RUN bash -lc 'chmod -R 777 /home/app/webapp/'
 
-RUN chmod 777 /home/app/webap
+#RUN chmod 777 /home/app/webap
+
+RUN bash -lc 'bundle install'

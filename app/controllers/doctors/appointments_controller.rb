@@ -40,7 +40,7 @@ class Doctors::AppointmentsController < ApplicationController
         @appointment.update(status: 1)
       end
       if params[:commit] == "Cancel Appointment"
-        @appointment.update(status: -1)
+        @appointment.update(status: 2)
       end
       if appointment_params[:analysis_ids].present?
         appointment_params[:analysis_ids].each do |analysis_id|
